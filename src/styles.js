@@ -22,12 +22,12 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background-color: var(--bgcolor);
+		width: 400px;
 		margin: 0 auto;
 		padding: 0;
-		font-size: 1rem;
-		width: 400px;
+		background-color: var(--bgcolor);
 		color: var(--textcolor);
+		font-size: 1rem;
 		text-align: center;
 	}
 	
