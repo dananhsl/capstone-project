@@ -1,12 +1,12 @@
-import BankAccounts from '.';
+import BankAccount from '.';
 
-export function Default() {
-	return <BankAccounts />;
-}
+export const Default = args => <BankAccount {...args} />;
 
-const story = {
-	title: 'Bank Account',
-	component: BankAccounts,
+const story = Default.bind({});
+story.args = {
+	accountName: 'Bank Account',
+	bankName: 'BankAccount',
+	accountValue: 200,
 };
 
 export default story;
