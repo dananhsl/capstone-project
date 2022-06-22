@@ -13,7 +13,7 @@ describe('Bank Account', () => {
 				{(accountName, bankName, accountValue)}
 			</BankAccount>
 		);
-		const aName = screen.getByText(accountName, bankName, accountValue);
+		const aName = screen.getByText(accountName);
 		const bName = screen.getByText(bankName);
 		expect(aName).toBeInTheDocument();
 		expect(bName).toBeInTheDocument();

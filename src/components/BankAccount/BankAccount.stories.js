@@ -4,8 +4,8 @@ export const Default = args => <BankAccount {...args} />;
 
 const story = Default.bind({});
 story.args = {
-	accountName: 'Bank Account',
-	bankName: 'BankAccount',
+	accountName: 'Girokonto',
+	bankName: 'Volksbank',
 	accountValue: 200,
 };
 
