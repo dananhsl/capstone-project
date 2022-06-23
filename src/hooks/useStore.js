@@ -1,16 +1,9 @@
 import create from 'zustand';
 
+import db from '../db.js';
+
 const useStore = create(set => ({
-	counter: 0,
-	setCounter(counter) {
-		set({counter});
-	},
-	decrementCounter(step = 1) {
-		set(({counter}) => ({counter: counter - step}));
-	},
-	incrementCounter(step = 1) {
-		set(({counter}) => ({counter: counter + step}));
-	},
+	db: [...db],
 }));
 
 export default useStore;
