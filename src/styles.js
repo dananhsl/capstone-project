@@ -22,8 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		width: calc(100% - 300px);
-		margin: 0 auto;
+		margin: 0 20px;
 		padding: 0;
 		background-color: var(--bgcolor);
 		color: var(--textcolor);
