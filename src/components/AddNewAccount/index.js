@@ -8,7 +8,7 @@ export default function AddNewBankAccount() {
 	const [bankAccount, setBankAccount] = useState({
 		accountName: '',
 		bankName: '',
-		accountValue: 0,
+		accountValue: '',
 	});
 	const addBankaccount = useStore(state => state.addBankaccount);
 	return (
@@ -17,7 +17,7 @@ export default function AddNewBankAccount() {
 				onSubmit={event => {
 					event.preventDefault();
 					addBankaccount(bankAccount);
-					setBankAccount({accountName: '', bankName: '', accountValue: 0});
+					setBankAccount({accountName: '', bankName: '', accountValue: ''});
 				}}
 			>
 				<label htmlFor="accountName">Enter the name of your Bank Account</label>
@@ -51,16 +51,16 @@ export default function AddNewBankAccount() {
 					onChange={event => {
 						setBankAccount({
 							...bankAccount,
-							accountValue: parseFloat(event.target.value),
+							accountValue: event.target.value.replace(',', '.'),
 						});
 					}}
 					id="inputAccountValue"
 					value={bankAccount.accountValue}
-					type="number"
+					type="text"
+					pattern="[+\\-]?([0-9]+)([,\\.]{1}[0-9]+)"
 					required
 					aria-label="Enter the current Value"
 					placeholder="5.25"
-					step={0.01}
 				></input>
 
 				<button type="submit">Add new account</button>
