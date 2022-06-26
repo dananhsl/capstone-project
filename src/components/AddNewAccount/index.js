@@ -57,7 +57,7 @@ export default function AddNewBankAccount() {
 					id="inputAccountValue"
 					value={bankAccount.accountValue}
 					type="text"
-					pattern="[+\\-]?([0-9]+)([,\\.]{1}[0-9]+)"
+					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
 					required
 					aria-label="Enter the current Value"
 					placeholder="5.25"
