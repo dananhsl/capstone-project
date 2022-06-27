@@ -4,8 +4,9 @@ import styled from 'styled-components';
 export const Ul = styled.ul`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
 	top: 0;
+	justify-content: space-around;
+
 	right: 5%;
 	margin-bottom: 2em;
 	padding: 1em;
@@ -15,8 +16,8 @@ export const Ul = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-	list-style: none;
 	color: var(--textcolor);
+	list-style: none;
 	text-decoration: none;
 
 	&:hover {
@@ -31,7 +32,7 @@ export const StyledNavLink = styled(NavLink)`
 
 export const Icon = styled.svg`
 	position: absolute;
+	right: 5%;
 	width: 2em;
 	height: 2em;
-	right: 5%;
 `;
