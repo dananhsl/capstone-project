@@ -1,14 +1,14 @@
-import {NavLink} from 'react-router-dom';
+import {StyledNavLink, Ul} from './styled';
 
 export default function NavigationLinks() {
 	return (
-		<ul>
-			<NavLink to="/">
+		<Ul>
+			<StyledNavLink to="/">
 				<li>Dashboard</li>
-			</NavLink>
-			<NavLink to="newBankaccount">
+			</StyledNavLink>
+			<StyledNavLink to="newBankaccount">
 				<li>Add New BankAccount</li>
-			</NavLink>
-		</ul>
+			</StyledNavLink>
+		</Ul>
 	);
 }

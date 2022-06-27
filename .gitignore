@@ -34,3 +34,5 @@ cypress/cucumber-json
 
 # IDE
 .idea
+
+src/components/Navigation/reacticons.md
