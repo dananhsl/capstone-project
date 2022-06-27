@@ -1,4 +1,5 @@
 import Dashboard from './pages/dashboard';
+import FormBankAccount from './pages/formBankAccount';
 import {GlobalStyle} from './styles';
 
 export default function App() {
@@ -6,6 +7,7 @@ export default function App() {
 		<>
 			<GlobalStyle />
 			<Dashboard />
+			<FormBankAccount />
 		</>
 	);
 }
