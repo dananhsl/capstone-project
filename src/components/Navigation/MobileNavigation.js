@@ -20,10 +20,12 @@ export default function MobileNavigation() {
 			/>
 		</Icon>
 	);
+
+	const closeMobileMenu = () => setOpen(false);
 	return (
 		<>
 			{open ? closeIcon : openIcon}
-			{open && <NavigationLinks />}
+			{open && <NavigationLinks closeMenu={closeMobileMenu} />}
 		</>
 	);
 }

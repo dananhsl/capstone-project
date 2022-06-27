@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Ul = styled.ul`
+export const NavContainer = styled.ul`
 	display: flex;
 	top: 0;
 	right: 5%;
@@ -18,7 +18,6 @@ export const StyledNavLink = styled(NavLink)`
 	color: var(--textcolor);
 	list-style: none;
 	text-decoration: none;
-
 	&:hover {
 		transform: scale(1.2);
 		color: var(--gradient2);

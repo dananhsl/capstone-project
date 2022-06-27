@@ -1,14 +1,14 @@
-import {StyledNavLink, Ul} from './styled';
+import {StyledNavLink, NavContainer} from './styled';
 
-export default function NavigationLinks() {
+export default function NavigationLinks({closeMenu}) {
 	return (
-		<Ul>
-			<StyledNavLink to="/">
+		<NavContainer>
+			<StyledNavLink to="/" onClick={closeMenu}>
 				<li>Dashboard</li>
 			</StyledNavLink>
-			<StyledNavLink to="newBankaccount">
-				<li>Add New BankAccount</li>
+			<StyledNavLink to="newBankaccount" onClick={closeMenu}>
+				<li>New BankAccount</li>
 			</StyledNavLink>
-		</Ul>
+		</NavContainer>
 	);
 }
