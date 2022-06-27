@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 		--gradient1: #e78800;
 		--gradient2: #e5ef1a;
 		--green: #00E087;
-		--red: #DE3232
+		--red: #DE3232;
 		--darkgray: #2f4f4f;
 	}
 
