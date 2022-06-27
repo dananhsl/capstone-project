@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 export const Ul = styled.ul`
 	display: flex;
-	flex-direction: column;
 	top: 0;
-	justify-content: space-around;
-
 	right: 5%;
+	flex-direction: column;
+	justify-content: space-around;
 	margin-bottom: 2em;
 	padding: 1em;
 	border: 3px solid var(--blue);
