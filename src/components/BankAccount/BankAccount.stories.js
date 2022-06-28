@@ -1,12 +1,19 @@
 import BankAccount from '.';
 
-export const Default = args => <BankAccount {...args} />;
+const Template = args => <BankAccount {...args} />;
 
-const story = Default.bind({});
-story.args = {
+export const Default = Template.bind({});
+Default.args = {
 	accountName: 'Girokonto',
 	bankName: 'Volksbank',
 	accountValue: 200,
+	onDelete: () => {
+		console.log('delete');
+	},
 };
 
+const story = {
+	title: 'Bankaccount',
+	component: BankAccount,
+};
 export default story;
