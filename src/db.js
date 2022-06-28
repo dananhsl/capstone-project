@@ -9,13 +9,13 @@ const db = [
 		entries: [
 			{
 				id: nanoid(),
-				date: 'Mo:07-06-2022',
+				date: '07-06-2022',
 				change: -40.31,
 				note: 'cloth',
 			},
 			{
 				id: nanoid(),
-				date: 'Mi:08-06-2022',
+				date: '08-06-2022',
 				change: 50.0,
 				note: 'visit grandma',
 			},
@@ -29,13 +29,13 @@ const db = [
 		entries: [
 			{
 				id: nanoid(),
-				date: 'Mo:23-06-2022',
+				date: '23-06-2022',
 				change: -500,
 				note: 'Frau war einkaufen',
 			},
 			{
 				id: nanoid(),
-				date: 'Mi:09-06-2022',
+				date: '09-06-2022',
 				change: 50.0,
 				note: 'visit grandma',
 			},
@@ -49,13 +49,13 @@ const db = [
 		entries: [
 			{
 				id: nanoid(),
-				date: 'Mo:07-06-2022',
+				date: '07-06-2022',
 				change: -300,
 				note: 'new monitor',
 			},
 			{
 				id: nanoid(),
-				date: 'Mi:08-06-2022',
+				date: '08-06-2022',
 				change: 50.0,
 				note: 'visit grandma',
 			},
