@@ -1,10 +1,10 @@
-import BankAccount from '../components/BankAccount/index.js';
+import BankAccounts from '../components/BankAccount/BankAccounts';
 
 export default function Dashboard() {
 	return (
 		<>
 			<h1>Dashboard</h1>
-			<BankAccount />
+			<BankAccounts />
 		</>
 	);
 }

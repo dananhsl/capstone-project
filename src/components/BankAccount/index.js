@@ -1,24 +1,14 @@
-import useStore from '../../hooks/useStore';
-
 import {Section} from './styled';
 
-export default function BankAccount() {
-	const bankAccounts = useStore(state => state.db);
-	const deleteBankaccount = useStore(state => state.deleteBankaccount);
+export default function BankAccount(props) {
 	return (
-		<>
-			{bankAccounts.map(bankAccount => {
-				return (
-					<Section key={bankAccount.id}>
-						<h2>{bankAccount.accountName}</h2>
-						<h3>{bankAccount.bankName}</h3>
-						<p>{bankAccount.accountValue} €</p>
-						<button type="button" onClick={() => deleteBankaccount(bankAccount.id)}>
-							Delete
-						</button>
-					</Section>
-				);
-			})}
-		</>
+		<Section>
+			<h2>{props.accountName}</h2>
+			<h3>{props.bankName}</h3>
+			<p>{props.accountValue} €</p>
+			<button type="button" onClick={props.onDelete}>
+				Delete
+			</button>
+		</Section>
 	);
 }
