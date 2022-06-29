@@ -9,9 +9,6 @@ export default function NavigationLinks({closeMenu}) {
 			<StyledNavLink to="newBankaccount" onClick={closeMenu}>
 				<li>New BankAccount</li>
 			</StyledNavLink>
-			<StyledNavLink to="transactionhistory" onClick={closeMenu}>
-				<li>Transactions</li>
-			</StyledNavLink>
 		</NavContainer>
 	);
 }

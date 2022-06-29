@@ -14,7 +14,7 @@ export default function App() {
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
 				<Route path="/newBankaccount" element={<FormBankAccount />} />
-				<Route path="/transactionhistory" element={<TransactionHistory />} />
+				<Route path="/:accountID" element={<TransactionHistory />} />
 			</Routes>
 		</>
 	);
