@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import MobileNavigation from './components/Navigation/MobileNavigation';
 import Dashboard from './pages/dashboard';
 import FormBankAccount from './pages/formBankAccount';
+import TransactionHistory from './pages/transactions';
 import {GlobalStyle} from './styles';
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
 				<Route path="/newBankaccount" element={<FormBankAccount />} />
+				<Route path="/transactionhistory" element={<TransactionHistory />} />
 			</Routes>
 		</>
 	);
