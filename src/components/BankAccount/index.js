@@ -1,6 +1,6 @@
 import {Section} from './styled';
 
-export default function BankAccount() {
+export default function BankAccount(props) {
 	return (
 		<>
 			<Section>
