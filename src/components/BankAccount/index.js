@@ -7,11 +7,13 @@ export default function BankAccount(props) {
 				<h2>{props.accountName}</h2>
 				<h3>{props.bankName}</h3>
 				<p>{props.accountValue} €</p>
+				<button type="button" onClick={props.onNavigate}>
+					Transactions
+				</button>
 				<button type="button" onClick={props.onDelete}>
 					Delete
 				</button>
 			</Section>
-			;
 		</>
 	);
 }
