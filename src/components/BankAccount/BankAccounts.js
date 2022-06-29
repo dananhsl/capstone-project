@@ -1,3 +1,4 @@
+
 import {useNavigate} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
@@ -19,6 +20,7 @@ export default function BankAccounts() {
 					onDelete={() => {
 						deleteBankaccount(id);
 					}}
+
 					onNavigate={() => {
 						navigate('/' + id);
 					}}
