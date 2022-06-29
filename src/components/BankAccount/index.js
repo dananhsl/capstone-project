@@ -15,3 +15,5 @@ export default function BankAccount(props) {
 				</button>
 			</Section>
 		</>
+	);
+}
