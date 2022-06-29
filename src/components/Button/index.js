@@ -1,18 +1,9 @@
-import StyledButton from './styled';
+import {useNavigate} from 'react-router-dom';
 
-/**
- *
- * @param {React.ReactNode} children
- * @param {React.HTMLAttributes<HTMLButtonElement>} props
- * @return {JSX.Element}
- * @constructor
- */
-export default function Button({children, type = 'button', ...props}) {
-	return (
-		<StyledButton type={type} {...props}>
-			{children}
-		</StyledButton>
-	);
+import StyledButton from './styled';
+export default function Button() {
+	const navigate = useNavigate();
+	return <StyledButton onClick={() => navigate('/')}>Return to Dashboard</StyledButton>;
 }
 
 Button.propTypes = {};
