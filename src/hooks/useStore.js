@@ -30,11 +30,12 @@ const useStore = create(set => ({
 			// console.log(filteredAccount);
 
 			const filteredAccount = db.find(bankAccount => bankAccount.id === id);
-			const entries = filteredAccount.entries;
-			entries.push(transaction);
-			filteredAccount.entries = entries;
+			let entries = filteredAccount.entries;
 			return {
-				...filteredAccount.entries,
+				db: [
+					...state.db,
+					(filteredAccount.entries = [...entries, {id: nanoid(), ...transaction}]),
+				],
 			};
 		});
 	},
