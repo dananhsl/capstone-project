@@ -24,6 +24,20 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	addTransaction: (id, transaction) => {
+		set(state => {
+			// const filteredAccount = state.db.filter(bankAccount => bankAccount.id === id);
+			// console.log(filteredAccount);
+
+			const filteredAccount = db.find(bankAccount => bankAccount.id === id);
+			const entries = filteredAccount.entries;
+			entries.push(transaction);
+			filteredAccount.entries = entries;
+			return {
+				...filteredAccount.entries,
+			};
+		});
+	},
 }));
 
 export default useStore;

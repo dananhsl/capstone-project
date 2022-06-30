@@ -1,6 +1,7 @@
 import {useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
+import FormTransaction from '../../pages/formTransaction';
 
 import Transaction from './index.js';
 
@@ -14,6 +15,7 @@ export default function Transactions() {
 			{entries.map(({id, date, change, note}) => (
 				<Transaction key={id} date={date} change={change} note={note} />
 			))}
+			<FormTransaction />
 		</>
 	);
 }

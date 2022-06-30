@@ -12,14 +12,12 @@ const db = [
 				date: '07-06-2022',
 				change: -40.31,
 				note: 'cloth',
-				category: 'Versicherung',
 			},
 			{
 				id: nanoid(),
 				date: '08-06-2022',
 				change: 50.0,
 				note: 'visit grandma',
-				category: 'Hobbies and Freetime',
 			},
 		],
 	},
@@ -34,14 +32,12 @@ const db = [
 				date: '23-06-2022',
 				change: -500,
 				note: 'Frau war einkaufen',
-				category: 'Hobbys',
 			},
 			{
 				id: nanoid(),
 				date: '09-06-2022',
 				change: 50.0,
 				note: 'visit grandma',
-				category: 'Freizeit',
 			},
 		],
 	},
@@ -66,5 +62,3 @@ const db = [
 		],
 	},
 ];
-
-export default db;
