@@ -26,15 +26,15 @@ const useStore = create(set => ({
 	},
 	addTransaction: (id, transaction) => {
 		set(state => {
-			// const filteredAccount = state.db.filter(bankAccount => bankAccount.id === id);
-			// console.log(filteredAccount);
-
 			const filteredAccount = db.find(bankAccount => bankAccount.id === id);
-			let entries = filteredAccount.entries;
 			return {
 				db: [
 					...state.db,
-					(filteredAccount.entries = [...entries, {id: nanoid(), ...transaction}]),
+
+					(filteredAccount.entries = [
+						...filteredAccount.entries,
+						{id: nanoid(), ...transaction},
+					]),
 				],
 			};
 		});
@@ -42,3 +42,5 @@ const useStore = create(set => ({
 }));
 
 export default useStore;
+
+//First attempt
