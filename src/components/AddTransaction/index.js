@@ -5,8 +5,6 @@ import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
 export default function AddTranscation() {
-	//TODO usestate and match inputs so they work
-	//zustand new function for adding transaction
 	const [transaction, setTransaction] = useState({
 		date: '',
 		change: '',
@@ -26,16 +24,6 @@ export default function AddTranscation() {
 					setTransaction({date: '', change: '', note: '', category: ''});
 				}}
 			>
-				{/* <label htmlFor="bankAccount">Enter/Select the name of your Bank Account</label>
-				<input
-					id="bankAccount"
-					value={''}
-					type="text"
-					required
-					aria-label="Enter the name of your Bank Account"
-					placeholder="bank account"
-				></input> */}
-
 				<label htmlFor="date">Date</label>
 				<input
 					id="date"
