@@ -26,7 +26,7 @@ export default function AddNewBankAccount() {
 				accountValue: currentBankAccount.accountValue,
 			});
 		}
-	}, []);
+	}, [currentBankAccount]);
 	return (
 		<>
 			<Form
