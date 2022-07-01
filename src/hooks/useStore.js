@@ -24,6 +24,17 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	addTransaction: (id, transaction) => {
+		const updateDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount.entries = [...bankAccount.entries, {id: nanoid(), ...transaction}];
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {db: updateDb};
+		});
+	},
 }));
 
 export default useStore;

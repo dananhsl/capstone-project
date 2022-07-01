@@ -9,14 +9,17 @@ describe('Bank Account', () => {
 		const bankName = 'Bank XY';
 		const accountValue = 21983;
 		render(
-			<BankAccount accountName={accountName} bankName={bankName} accountValue={accountValue}>
-				{(accountName, bankName, accountValue)}
-			</BankAccount>
+			<BankAccount
+				accountName={accountName}
+				bankName={bankName}
+				accountValue={accountValue}
+			/>
 		);
 		const aName = screen.getByText(accountName);
 		const bName = screen.getByText(bankName);
+		const balance = screen.getByText('21983 €');
 		expect(aName).toBeInTheDocument();
 		expect(bName).toBeInTheDocument();
-		expect(screen.getByText('21983 €')).toBeInTheDocument();
+		expect(balance).toBeInTheDocument();
 	});
 });
