@@ -10,6 +10,9 @@ export default function BankAccount(props) {
 				<button type="button" onClick={props.onNavigate}>
 					Transactions
 				</button>
+				<button type="button" onClick={props.onEdit}>
+					Edit
+				</button>
 				<button type="button" onClick={props.onDelete}>
 					Delete
 				</button>
