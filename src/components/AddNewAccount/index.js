@@ -84,7 +84,7 @@ export default function AddNewBankAccount() {
 					placeholder="5.25"
 				></input>
 
-				<button type="submit">Add new account</button>
+				<button type="submit">Submit</button>
 			</Form>
 		</>
 	);
