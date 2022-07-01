@@ -36,8 +36,8 @@ const useStore = create(set => ({
 			return {
 				db: updatedDb,
 			};
-    });
-  };
+		});
+	},
   
    addTransaction: (id, transaction) => {
 		const updateDb = db.map(bankAccount => {
