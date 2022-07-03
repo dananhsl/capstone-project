@@ -24,6 +24,32 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	editBankAccount: (id, updatedBankAccount) => {
+		const updatedDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount = {id: id, ...updatedBankAccount};
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {
+				db: updatedDb,
+			};
+		});
+	},
+	deleteEntry: (id, entryId) => {
+		const updatedDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {
+				db: updatedDb,
+			};
+		});
+	},
 }));
 
 export default useStore;
