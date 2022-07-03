@@ -6,7 +6,7 @@ export default function NavigationLinks({closeMenu}) {
 			<StyledNavLink to="/" onClick={closeMenu}>
 				<li>Dashboard</li>
 			</StyledNavLink>
-			<StyledNavLink to="newBankaccount" onClick={closeMenu}>
+			<StyledNavLink to="/bankAccount/add" onClick={closeMenu}>
 				<li>New BankAccount</li>
 			</StyledNavLink>
 		</NavContainer>

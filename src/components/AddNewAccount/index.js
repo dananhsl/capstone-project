@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore.js';
 
@@ -10,13 +11,33 @@ export default function AddNewBankAccount() {
 		bankName: '',
 		accountValue: '',
 	});
+	const {accountID} = useParams();
 	const addBankaccount = useStore(state => state.addBankaccount);
+	const currentBankAccount = useStore(state =>
+		state.db.find(account => account.id === accountID)
+	);
+	const editBankAccount = useStore(state => state.editBankAccount);
+
+	useEffect(() => {
+		if (currentBankAccount) {
+			setBankAccount({
+				accountName: currentBankAccount.accountName,
+				bankName: currentBankAccount.bankName,
+				accountValue: currentBankAccount.accountValue,
+			});
+		}
+	}, [currentBankAccount]);
 	return (
 		<>
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
-					addBankaccount(bankAccount);
+					if (accountID) {
+						editBankAccount(accountID, bankAccount);
+						alert('Edited');
+					} else {
+						addBankaccount(bankAccount);
+					}
 					setBankAccount({accountName: '', bankName: '', accountValue: ''});
 				}}
 			>
@@ -63,7 +84,7 @@ export default function AddNewBankAccount() {
 					placeholder="5.25"
 				></input>
 
-				<button type="submit">Add new account</button>
+				<button type="submit">Submit</button>
 			</Form>
 		</>
 	);
