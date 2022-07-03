@@ -1,6 +1,7 @@
 import {useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
+import FormTransaction from '../../pages/formTransaction';
 
 import Transaction from './index.js';
 
@@ -22,6 +23,7 @@ export default function Transactions() {
 					}}
 				/>
 			))}
+			<FormTransaction />
 		</>
 	);
 }

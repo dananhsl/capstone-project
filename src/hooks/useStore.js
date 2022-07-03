@@ -1,3 +1,4 @@
+
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
@@ -24,6 +25,7 @@ const useStore = create(set => ({
 			};
 		});
 	},
+
 	editBankAccount: (id, updatedBankAccount) => {
 		const updatedDb = db.map(bankAccount => {
 			if (id === bankAccount.id) {
@@ -37,7 +39,20 @@ const useStore = create(set => ({
 			};
 		});
 	},
-	deleteEntry: (id, entryId) => {
+  
+   addTransaction: (id, transaction) => {
+		const updateDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount.entries = [...bankAccount.entries, {id: nanoid(), ...transaction}];
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {db: updateDb};
+		});
+	},
+  
+  	deleteEntry: (id, entryId) => {
 		const updatedDb = db.map(bankAccount => {
 			if (id === bankAccount.id) {
 				bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
@@ -50,6 +65,6 @@ const useStore = create(set => ({
 			};
 		});
 	},
+  
 }));
-
 export default useStore;
