@@ -23,6 +23,7 @@ export default function Transactions() {
 					note={note}
 					onEdit={() => {
 						navigate('/transaction/edit/' + accountID + '/' + id);
+					}}
 					deleteEntry={() => {
 						deleteEntry(accountID, id);
 					}}
