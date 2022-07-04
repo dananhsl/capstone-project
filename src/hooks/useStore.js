@@ -1,3 +1,4 @@
+
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
@@ -57,6 +58,20 @@ const useStore = create(set => ({
 			const index = account.entries.findIndex(entry => entry.id === transaction.id);
 			account.entries[index] = transaction;
 			return {db: [...state.db]};
+		});
+	},
+  
+  	deleteEntry: (id, entryId) => {
+		const updatedDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {
+				db: updatedDb,
+			};
 		});
 	},
 }));

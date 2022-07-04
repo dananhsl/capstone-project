@@ -11,6 +11,7 @@ export default function Transactions() {
 	const {accountID} = useParams();
 	const entries = db.find(account => account.id === accountID).entries;
 	const navigate = useNavigate();
+	const deleteEntry = useStore(state => state.deleteEntry);
 
 	return (
 		<>
@@ -22,6 +23,8 @@ export default function Transactions() {
 					note={note}
 					onEdit={() => {
 						navigate('/transaction/edit/' + accountID + '/' + id);
+					deleteEntry={() => {
+						deleteEntry(accountID, id);
 					}}
 				/>
 			))}
