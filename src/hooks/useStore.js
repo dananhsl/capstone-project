@@ -1,3 +1,4 @@
+
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
@@ -50,5 +51,20 @@ const useStore = create(set => ({
 			return {db: updateDb};
 		});
 	},
+  
+  	deleteEntry: (id, entryId) => {
+		const updatedDb = db.map(bankAccount => {
+			if (id === bankAccount.id) {
+				bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
+			}
+			return bankAccount;
+		});
+		set(() => {
+			return {
+				db: updatedDb,
+			};
+		});
+	},
+  
 }));
 export default useStore;
