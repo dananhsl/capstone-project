@@ -36,3 +36,4 @@ cypress/cucumber-json
 .idea
 
 src/components/Navigation/reacticons.md
+db_old.js

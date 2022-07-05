@@ -1,11 +1,10 @@
-
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
-import db from '../db.js';
+import {accounts, transactions} from '../db.js';
 
 const useStore = create(set => ({
-	db: [...db],
+	db: [...accounts, ...transactions],
 	deleteBankaccount: id => {
 		set(state => {
 			return {db: state.db.filter(bankAccount => bankAccount.id !== id)};
@@ -19,7 +18,6 @@ const useStore = create(set => ({
 					{
 						id: nanoid(),
 						...bankAccount,
-						entries: [],
 					},
 				],
 			};
@@ -27,7 +25,7 @@ const useStore = create(set => ({
 	},
 
 	editBankAccount: (id, updatedBankAccount) => {
-		const updatedDb = db.map(bankAccount => {
+		const updatedDb = accounts.map(bankAccount => {
 			if (id === bankAccount.id) {
 				bankAccount = {id: id, ...updatedBankAccount};
 			}
@@ -40,40 +38,40 @@ const useStore = create(set => ({
 		});
 	},
 
-	addTransaction: (id, transaction) => {
-		const updateDb = db.map(bankAccount => {
-			if (id === bankAccount.id) {
-				bankAccount.entries = [...bankAccount.entries, {id: nanoid(), ...transaction}];
-			}
-			return bankAccount;
-		});
-		set(() => {
-			return {db: updateDb};
-		});
-	},
+	// addTransaction: (id, transaction) => {
+	// 	const updateDb = db.map(bankAccount => {
+	// 		if (id === bankAccount.id) {
+	// 			bankAccount.entries = [...bankAccount.entries, {id: nanoid(), ...transaction}];
+	// 		}
+	// 		return bankAccount;
+	// 	});
+	// 	set(() => {
+	// 		return {db: updateDb};
+	// 	});
+	// },
 
-	editTransaction: (id, transaction) => {
-		set(state => {
-			const account = state.db.find(account => account.id === id);
-			const index = account.entries.findIndex(entry => entry.id === transaction.id);
-			account.entries[index] = transaction;
-			return {db: [...state.db]};
-		});
-	},
-  
-  	deleteEntry: (id, entryId) => {
-		const updatedDb = db.map(bankAccount => {
-			if (id === bankAccount.id) {
-				bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
-			}
-			return bankAccount;
-		});
-		set(() => {
-			return {
-				db: updatedDb,
-			};
-		});
-	},
+	// editTransaction: (id, transaction) => {
+	// 	set(state => {
+	// 		const account = state.db.find(account => account.id === id);
+	// 		const index = account.entries.findIndex(entry => entry.id === transaction.id);
+	// 		account.entries[index] = transaction;
+	// 		return {db: [...state.db]};
+	// 	});
+	// },
+
+	// deleteEntry: (id, entryId) => {
+	// 	const updatedDb = db.map(bankAccount => {
+	// 		if (id === bankAccount.id) {
+	// 			bankAccount.entries = bankAccount.entries.filter(entry => entry.id !== entryId);
+	// 		}
+	// 		return bankAccount;
+	// 	});
+	// 	set(() => {
+	// 		return {
+	// 			db: updatedDb,
+	// 		};
+	// 	});
+	// },
 }));
 
 export default useStore;
