@@ -1,20 +1,22 @@
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
-import {accounts, transactions} from '../db.js';
+import {accounts, transactions, banks} from '../db.js';
 
 const useStore = create(set => ({
-	db: [...accounts, ...transactions],
+	accounts: [...accounts],
+	transactions: [...transactions],
+	banks: [...banks],
 	deleteBankaccount: id => {
 		set(state => {
-			return {db: state.db.filter(bankAccount => bankAccount.id !== id)};
+			return {accounts: state.accounts.filter(bankAccount => bankAccount.id !== id)};
 		});
 	},
 	addBankaccount: bankAccount => {
 		set(state => {
 			return {
-				db: [
-					...state.db,
+				accounts: [
+					...state.accounts,
 					{
 						id: nanoid(),
 						...bankAccount,
@@ -33,7 +35,7 @@ const useStore = create(set => ({
 		});
 		set(() => {
 			return {
-				db: updatedDb,
+				accounts: updatedDb,
 			};
 		});
 	},

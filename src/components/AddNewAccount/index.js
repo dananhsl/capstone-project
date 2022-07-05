@@ -14,16 +14,16 @@ export default function AddNewBankAccount() {
 	const {accountID} = useParams();
 	const addBankaccount = useStore(state => state.addBankaccount);
 	const currentBankAccount = useStore(state =>
-		state.db.find(account => account.id === accountID)
+		state.accounts.find(account => account.id === accountID)
 	);
 	const editBankAccount = useStore(state => state.editBankAccount);
 
 	useEffect(() => {
 		if (currentBankAccount) {
 			setBankAccount({
-				accountName: currentBankAccount.accountName,
+				name: currentBankAccount.name,
 				bankName: currentBankAccount.bankName,
-				accountValue: currentBankAccount.accountValue,
+				value: currentBankAccount.value,
 			});
 		}
 	}, [currentBankAccount]);
@@ -38,16 +38,16 @@ export default function AddNewBankAccount() {
 					} else {
 						addBankaccount(bankAccount);
 					}
-					setBankAccount({accountName: '', bankName: '', accountValue: ''});
+					setBankAccount({name: '', bankName: '', value: ''});
 				}}
 			>
 				<label htmlFor="accountName">Enter the name of your Bank Account</label>
 				<input
 					onChange={event => {
-						setBankAccount({...bankAccount, accountName: event.target.value});
+						setBankAccount({...bankAccount, name: event.target.value});
 					}}
 					id="inputAccountName"
-					value={bankAccount.accountName}
+					value={bankAccount.name}
 					type="text"
 					required
 					aria-label="Enter the name of your Bank Account"
@@ -72,11 +72,11 @@ export default function AddNewBankAccount() {
 					onChange={event => {
 						setBankAccount({
 							...bankAccount,
-							accountValue: event.target.value.replace(',', '.'),
+							value: event.target.value.replace(',', '.'),
 						});
 					}}
 					id="inputAccountValue"
-					value={bankAccount.accountValue}
+					value={bankAccount.value}
 					type="text"
 					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
 					required

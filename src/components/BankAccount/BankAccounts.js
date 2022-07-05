@@ -5,17 +5,17 @@ import useStore from '../../hooks/useStore';
 import BankAccount from './index.js';
 
 export default function BankAccounts() {
-	const db = useStore(state => state.db);
+	const accounts = useStore(state => state.accounts);
 	const deleteBankaccount = useStore(state => state.deleteBankaccount);
 	const navigate = useNavigate();
 	return (
 		<>
-			{db.map(({id, accountName, bankName, accountValue}) => (
+			{accounts.map(({id, name, bankName, value}) => (
 				<BankAccount
 					key={id}
-					accountName={accountName}
+					accountName={name}
 					bankName={bankName}
-					accountValue={accountValue}
+					value={value}
 					onDelete={() => {
 						deleteBankaccount(id);
 					}}
