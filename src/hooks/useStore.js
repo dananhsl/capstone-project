@@ -36,32 +36,39 @@ const useStore = create((set, get) => ({
 			};
 		});
 	},
-	//To Do Refactor editBankaccount clean code
 	editBankAccount(id, updatedBankAccount) {
-		const updatedDb = accounts.map(bankAccount => {
-			if (id === bankAccount.id) {
-				bankAccount = {id: id, ...updatedBankAccount};
-			}
-			return bankAccount;
-		});
-		set(() => {
+		set(state => {
+			const updatedDb = state.accounts.map(bankAccount => {
+				if (id === bankAccount.id) {
+					bankAccount = {id: id, ...updatedBankAccount};
+				}
+				return bankAccount;
+			});
 			return {
 				accounts: updatedDb,
 			};
 		});
 	},
+	addTransaction: (accountId, transaction) => {
+		set(state => {
+			const transactionId = nanoid();
+			const {accounts} = get();
+			const index = accounts.findIndex(account => account.id === accountId);
+			accounts[index].transactions.push(transactionId);
 
-	// addTransaction: (id, transaction) => {
-	// 	const updateDb = db.map(bankAccount => {
-	// 		if (id === bankAccount.id) {
-	// 			bankAccount.entries = [...bankAccount.entries, {id: nanoid(), ...transaction}];
-	// 		}
-	// 		return bankAccount;
-	// 	});
-	// 	set(() => {
-	// 		return {db: updateDb};
-	// 	});
-	// },
+			return {
+				accounts: [...accounts],
+				transactions: [
+					...state.transactions,
+					{
+						id: transactionId,
+						accountID: accountId,
+						...transaction,
+					},
+				],
+			};
+		});
+	},
 
 	editTransaction(id, partial) {
 		set(state => {
@@ -71,7 +78,6 @@ const useStore = create((set, get) => ({
 			return {transactions};
 		});
 	},
-
 	deleteTransaction(id) {
 		set(state => {
 			return {
