@@ -48,7 +48,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 100.53,
 		note: 'cloth',
-		ccategory: 'c-1',
+		category: 'c-1',
 	},
 	{
 		id: 't-3',
@@ -88,7 +88,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 22.22,
 		note: 'cookies-delivery',
-		ccategory: 'c-6',
+		category: 'c-6',
 	},
 	{
 		id: 't-7',
