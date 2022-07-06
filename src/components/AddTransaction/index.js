@@ -14,10 +14,12 @@ export default function AddTransaction() {
 
 	const {accountID, transactionID} = useParams();
 	const currentBankAccount = useStore(state =>
-		state.db.find(account => account.id === accountID)
+		state.accounts.find(account => account.id === accountID)
 	);
 
-	const currentTransaction = currentBankAccount.entries.find(entry => entry.id === transactionID);
+	const currentTransaction = currentBankAccount.transactions.find(
+		entry => entry.id === transactionID
+	);
 
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);

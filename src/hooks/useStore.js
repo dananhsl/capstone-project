@@ -3,11 +3,22 @@ import create from 'zustand';
 
 import {accounts, transactions, banks} from '../db.js';
 
-const useStore = create(set => ({
+const useStore = create((set, get) => ({
 	accounts: [...accounts],
 	transactions: [...transactions],
 	banks: [...banks],
-	deleteBankaccount: id => {
+	getAccountWithData(id) {
+		const {accounts, transactions, banks} = get();
+		const account = accounts.find(account_ => account_.id === id);
+		return {
+			...account,
+			Transactions: transactions.filter(transaction =>
+				account.transactions.includes(transaction.id)
+			),
+			Bank: banks.find(bank => bank.id === account.bankId),
+		};
+	},
+	deleteBankaccount(id) {
 		set(state => {
 			return {accounts: state.accounts.filter(bankAccount => bankAccount.id !== id)};
 		});
@@ -25,7 +36,7 @@ const useStore = create(set => ({
 			};
 		});
 	},
-
+	//To Do Refactor editBankaccount clean code
 	editBankAccount: (id, updatedBankAccount) => {
 		const updatedDb = accounts.map(bankAccount => {
 			if (id === bankAccount.id) {

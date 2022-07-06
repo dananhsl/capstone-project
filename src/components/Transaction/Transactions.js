@@ -7,15 +7,17 @@ import FormTransaction from '../../pages/formTransaction';
 import Transaction from './index.js';
 
 export default function Transactions() {
-	const db = useStore(state => state.db);
+	//const transactions = useStore(state => state.transactions);
 	const {accountID} = useParams();
-	const entries = db.find(account => account.id === accountID).entries;
+	//const entries = db.find(account => account.id === accountID).entries;
+	const getAccountWithData = useStore(state => state.getAccountWithData);
+	const account = getAccountWithData(accountID);
 	const navigate = useNavigate();
 	const deleteEntry = useStore(state => state.deleteEntry);
 
 	return (
 		<>
-			{entries.map(({id, date, change, note}) => (
+			{account.Transactions.map(({id, date, change, note}) => (
 				<Transaction
 					key={id}
 					date={date}
