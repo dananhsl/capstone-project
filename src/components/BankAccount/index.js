@@ -6,7 +6,7 @@ export default function BankAccount(props) {
 			<Section>
 				<h2>{props.accountName}</h2>
 				<h3>{props.bankName}</h3>
-				<p>{props.accountValue} €</p>
+				<p>{props.value} €</p>
 				<button type="button" onClick={props.onNavigate}>
 					Transactions
 				</button>

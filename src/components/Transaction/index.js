@@ -9,7 +9,7 @@ export default function Transaction(props) {
 			<button type="button" onClick={props.onEdit}>
 				Edit
 			</button>
-			<button onClick={() => props.deleteEntry(props.id)}>Delete</button>
+			<button onClick={() => props.deleteTransaction(props.id)}>Delete</button>
 		</Section>
 	);
 }

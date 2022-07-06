@@ -5,20 +5,13 @@ import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
 export default function AddTransaction() {
-	const [transaction, setTransaction] = useState({
-		date: '',
-		change: '',
-		note: '',
-		category: '',
-	});
+	const initialValue = {date: '', change: '', note: '', category: ''};
+	const [transaction, setTransaction] = useState(initialValue);
 
 	const {accountID, transactionID} = useParams();
-	const currentBankAccount = useStore(state =>
-		state.db.find(account => account.id === accountID)
+	const currentTransaction = useStore(state =>
+		state.transactions.find(transaction => transaction.id === transactionID)
 	);
-
-	const currentTransaction = currentBankAccount.entries.find(entry => entry.id === transactionID);
-
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
 
@@ -40,12 +33,12 @@ export default function AddTransaction() {
 				onSubmit={event => {
 					event.preventDefault();
 					if (transactionID) {
-						editTransaction(accountID, transaction);
+						editTransaction(transactionID, transaction);
 						alert('edited');
 					} else {
 						addTransaction(accountID, transaction);
 					}
-					setTransaction({date: '', change: '', note: '', category: ''});
+					setTransaction(initialValue);
 				}}
 			>
 				<label htmlFor="date">Date</label>
