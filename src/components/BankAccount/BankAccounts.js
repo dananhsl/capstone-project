@@ -10,23 +10,25 @@ export default function BankAccounts() {
 	const navigate = useNavigate();
 	return (
 		<>
-			{accounts.map(({id, name, bankName, value}) => (
-				<BankAccount
-					key={id}
-					accountName={name}
-					bankName={bankName}
-					value={value}
-					onDelete={() => {
-						deleteBankaccount(id);
-					}}
-					onNavigate={() => {
-						navigate('/' + id);
-					}}
-					onEdit={() => {
-						navigate('/bankAccount/edit/' + id);
-					}}
-				/>
-			))}
+			{accounts.map(({id, name, bankName, value}) => {
+				return (
+					<BankAccount
+						key={id}
+						accountName={name}
+						bankName={bankName}
+						value={value}
+						onDelete={() => {
+							deleteBankaccount(id);
+						}}
+						onNavigate={() => {
+							navigate('/' + id);
+						}}
+						onEdit={() => {
+							navigate('/bankAccount/edit/' + id);
+						}}
+					/>
+				);
+			})}
 		</>
 	);
 }
