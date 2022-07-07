@@ -82,6 +82,14 @@ const useStore = create((set, get) => ({
 			};
 		});
 	},
+	move(previousIndex, nextIndex) {
+		set(state => {
+			const accounts = [...state.accounts];
+			const account = accounts.splice(previousIndex, 1);
+			accounts.splice(nextIndex, 0, ...account);
+			return {accounts};
+		});
+	},
 }));
 
 export default useStore;

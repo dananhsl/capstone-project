@@ -1,6 +1,5 @@
 import {closestCenter, DndContext, PointerSensor, useSensor} from '@dnd-kit/core';
-import {arrayMove, SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
-import {useState} from 'react';
+import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {useNavigate} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
@@ -12,15 +11,13 @@ export default function BankAccounts() {
 	const deleteBankaccount = useStore(state => state.deleteBankaccount);
 	const navigate = useNavigate();
 	const sensors = [useSensor(PointerSensor)];
-	const [items, setItems] = useState([...accounts]);
+	const move = useStore(state => state.move);
 
 	const handleDragEnd = ({active, over}) => {
 		if (active.id !== over.id) {
-			setItems(items => {
-				const oldIndex = items.findIndex(item => item.id === active.id);
-				const newIndex = items.findIndex(item => item.id === over.id);
-				return arrayMove(items, oldIndex, newIndex);
-			});
+			const oldIndex = accounts.findIndex(account => account.id === active.id);
+			const newIndex = accounts.findIndex(account => account.id === over.id);
+			move(oldIndex, newIndex);
 		}
 	};
 	return (
@@ -31,10 +28,10 @@ export default function BankAccounts() {
 				onDragEnd={handleDragEnd}
 			>
 				<SortableContext
-					items={items.map(item => item.id)}
+					items={accounts.map(account => account.id)}
 					strategy={verticalListSortingStrategy}
 				>
-					{items.map(({id, name, bankName, value}) => {
+					{accounts.map(({id, name, bankName, value}) => {
 						return (
 							<BankAccount
 								key={id}
@@ -43,7 +40,6 @@ export default function BankAccounts() {
 								bankName={bankName}
 								value={value}
 								onDelete={() => {
-									setItems(accounts);
 									deleteBankaccount(id);
 								}}
 								onNavigate={() => {
