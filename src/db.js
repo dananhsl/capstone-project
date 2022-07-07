@@ -34,7 +34,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 40.31,
 		note: 'cloth',
-		category: 'c-1',
+		categoryId: 'c-1',
 	},
 	{
 		id: 't-2',
@@ -44,7 +44,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 100.53,
 		note: 'cloth',
-		category: 'c-1',
+		categoryId: 'c-1',
 	},
 	{
 		id: 't-3',
@@ -54,7 +54,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 120.31,
 		note: 'food for 2 weeks',
-		category: 'c-2',
+		categoryId: 'c-2',
 	},
 	{
 		id: 't-4',
@@ -64,7 +64,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 23.98,
 		note: 'craving for icecream',
-		category: 'c-2',
+		categoryId: 'c-2',
 	},
 	{
 		id: 't-5',
@@ -74,7 +74,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 12.31,
 		note: 'flowers',
-		category: 'c-3',
+		categoryId: 'c-3',
 	},
 	{
 		id: 't-6',
@@ -84,7 +84,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 22.22,
 		note: 'cookies-delivery',
-		category: 'c-6',
+		categoryId: 'c-6',
 	},
 	{
 		id: 't-7',
@@ -94,7 +94,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 485.5,
 		note: 'greedy landlord',
-		category: 'c-7',
+		categoryId: 'c-7',
 	},
 	{
 		id: 't-8',
@@ -104,7 +104,7 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 127.68,
 		note: 'somewhere very expensiv',
-		category: 'c-4',
+		categoryId: 'c-4',
 	},
 	{
 		id: 't-9',
@@ -114,11 +114,11 @@ export const transactions = [
 		dateUpdated: 'optional',
 		change: 142.51,
 		note: 'tent and camping stuff',
-		category: 'c-3',
+		categoryId: 'c-3',
 	},
 ];
 
-export const category = [
+export const categories = [
 	{
 		id: 'c-1',
 		name: 'hobbies and free time',

@@ -1,11 +1,12 @@
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
-import {accounts, transactions} from '../db.js';
+import {accounts, transactions, categories} from '../db.js';
 
 const useStore = create((set, get) => ({
 	accounts: [...accounts],
 	transactions: [...transactions],
+	categories: [...categories],
 	getAccountWithData(id) {
 		const {accounts, transactions} = get();
 		const account = accounts.find(account_ => account_.id === id);
@@ -14,6 +15,14 @@ const useStore = create((set, get) => ({
 			Transactions: transactions.filter(transaction =>
 				account.transactions.includes(transaction.id)
 			),
+		};
+	},
+	getTransactionWithData(id) {
+		const {transactions, categories} = get();
+		const transaction = transactions.find(transaction_ => transaction_.id === id);
+		return {
+			...transaction,
+			Categories: categories.filter(category => transaction.categoryId.includes(category.id)),
 		};
 	},
 	deleteBankaccount(id) {
