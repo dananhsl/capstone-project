@@ -1,3 +1,4 @@
+import {nanoid} from 'nanoid';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
@@ -6,48 +7,47 @@ import useStore from '../../hooks/useStore.js';
 import {Form} from './styled.js';
 
 export default function AddNewBankAccount() {
-	const [bankAccount, setBankAccount] = useState({
-		accountName: '',
-		bankName: '',
-		accountValue: '',
-	});
+	const initialValue = {name: '', value: '', transactions: [], bankName: ''};
+	const [account, setAccount] = useState(initialValue);
+
 	const {accountID} = useParams();
-	const addBankaccount = useStore(state => state.addBankaccount);
-	const currentBankAccount = useStore(state =>
+	const currentAccount = useStore(state =>
 		state.accounts.find(account => account.id === accountID)
 	);
 	const editBankAccount = useStore(state => state.editBankAccount);
+	const addBankaccount = useStore(state => state.addBankaccount);
 
 	useEffect(() => {
-		if (currentBankAccount) {
-			setBankAccount({
-				name: currentBankAccount.name,
-				bankName: currentBankAccount.bankName,
-				value: currentBankAccount.value,
+		if (currentAccount) {
+			setAccount({
+				name: currentAccount.name,
+				value: currentAccount.value,
+				transactions: [...currentAccount.transactions],
+				bankName: currentAccount.bankName,
 			});
 		}
-	}, [currentBankAccount]);
+	}, [currentAccount]);
 	return (
 		<>
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
 					if (accountID) {
-						editBankAccount(accountID, bankAccount);
+						editBankAccount(accountID, account);
 						alert('Edited');
 					} else {
-						addBankaccount(bankAccount);
+						addBankaccount(account);
 					}
-					setBankAccount({name: '', bankName: '', value: ''});
+					setAccount(initialValue);
 				}}
 			>
 				<label htmlFor="accountName">Enter the name of your Bank Account</label>
 				<input
 					onChange={event => {
-						setBankAccount({...bankAccount, name: event.target.value});
+						setAccount({...account, name: event.target.value});
 					}}
 					id="inputAccountName"
-					value={bankAccount.name}
+					value={account.name}
 					type="text"
 					required
 					aria-label="Enter the name of your Bank Account"
@@ -57,10 +57,10 @@ export default function AddNewBankAccount() {
 				<label htmlFor="bankName">Enter the name of your Bank </label>
 				<input
 					onChange={event => {
-						setBankAccount({...bankAccount, bankName: event.target.value});
+						setAccount({...account, bankName: event.target.value});
 					}}
 					id="inputBankName"
-					value={bankAccount.bankName}
+					value={account.bankName}
 					type="text"
 					required
 					aria-label="Enter the name of your Bank"
@@ -70,13 +70,13 @@ export default function AddNewBankAccount() {
 				<label htmlFor="accountValue">Enter the current amount of money</label>
 				<input
 					onChange={event => {
-						setBankAccount({
-							...bankAccount,
+						setAccount({
+							...account,
 							value: event.target.value.replace(',', '.'),
 						});
 					}}
 					id="inputAccountValue"
-					value={bankAccount.value}
+					value={account.value}
 					type="text"
 					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
 					required

@@ -1,14 +1,10 @@
-// const transactionId = transactions.map( (transaction) =>
-// 	if(transaction.accountId === accountId )
-// );
-
 export const accounts = [
 	{
 		id: 'a-1',
 		name: 'bargeld',
 		value: 700.02,
 		transactions: ['t-1', 't-2', 't-8', 't-9'],
-		bankid: 'b-1',
+		bankName: 'hosentasche',
 		userId: 'optional',
 	},
 	{
@@ -16,7 +12,7 @@ export const accounts = [
 		name: 'Girokonto',
 		value: 2200.0,
 		transactions: ['t-3', 't-4'],
-		bankid: 'b-2',
+		bankName: 'nicht so coole bank',
 		userId: 'optional',
 	},
 	{
@@ -24,7 +20,7 @@ export const accounts = [
 		name: 'Kreditkarte',
 		value: 700.02,
 		transactions: ['t-5', 't-6', 't-7'],
-		bankid: 'b-1',
+		bankName: 'coole bank',
 		userId: 'optional',
 	},
 ];
@@ -119,21 +115,6 @@ export const transactions = [
 		change: 142.51,
 		note: 'tent and camping stuff',
 		category: 'c-3',
-	},
-];
-
-export const banks = [
-	{
-		id: 'b-1',
-		name: 'hosentasche',
-	},
-	{
-		id: 'b-2',
-		name: 'nicht so coole bank',
-	},
-	{
-		id: 'b-3',
-		name: 'coole bank',
 	},
 ];
 

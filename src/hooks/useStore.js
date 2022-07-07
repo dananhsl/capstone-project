@@ -1,21 +1,19 @@
 import {nanoid} from 'nanoid';
 import create from 'zustand';
 
-import {accounts, transactions, banks} from '../db.js';
+import {accounts, transactions} from '../db.js';
 
 const useStore = create((set, get) => ({
 	accounts: [...accounts],
 	transactions: [...transactions],
-	banks: [...banks],
 	getAccountWithData(id) {
-		const {accounts, transactions, banks} = get();
+		const {accounts, transactions} = get();
 		const account = accounts.find(account_ => account_.id === id);
 		return {
 			...account,
 			Transactions: transactions.filter(transaction =>
 				account.transactions.includes(transaction.id)
 			),
-			Bank: banks.find(bank => bank.id === account.bankId),
 		};
 	},
 	deleteBankaccount(id) {
@@ -23,24 +21,24 @@ const useStore = create((set, get) => ({
 			return {accounts: state.accounts.filter(bankAccount => bankAccount.id !== id)};
 		});
 	},
-	addBankaccount(bankAccount) {
+	addBankaccount(account) {
 		set(state => {
 			return {
 				accounts: [
 					...state.accounts,
 					{
 						id: nanoid(),
-						...bankAccount,
+						...account,
 					},
 				],
 			};
 		});
 	},
-	editBankAccount(id, updatedBankAccount) {
+	editBankAccount(id, account) {
 		set(state => {
 			const updatedDb = state.accounts.map(bankAccount => {
 				if (id === bankAccount.id) {
-					bankAccount = {id: id, ...updatedBankAccount};
+					bankAccount = {id: id, ...account};
 				}
 				return bankAccount;
 			});
@@ -69,7 +67,6 @@ const useStore = create((set, get) => ({
 			};
 		});
 	},
-
 	editTransaction(id, partial) {
 		set(state => {
 			const index = state.transactions.findIndex(transaction => transaction.id === id);
