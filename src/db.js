@@ -142,7 +142,7 @@ export const categories = [
 	{
 		id: 'c-5',
 		name: 'insurance',
-		transactions: ['t-1', 't-2'],
+		transactions: [],
 	},
 	{
 		id: 'c-6',

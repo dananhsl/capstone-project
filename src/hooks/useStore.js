@@ -62,7 +62,8 @@ const useStore = create((set, get) => ({
 			const {accounts} = get();
 			const index = accounts.findIndex(account => account.id === accountId);
 			accounts[index].transactions.push(transactionId);
-
+			const index2 = categories.findIndex(category => category.id === transaction.categoryId);
+			categories[index2].transactions.push(transactionId);
 			return {
 				accounts: [...accounts],
 				transactions: [
