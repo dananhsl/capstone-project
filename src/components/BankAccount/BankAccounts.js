@@ -9,7 +9,6 @@ import BankAccount from './index.js';
 
 export default function BankAccounts() {
 	const accounts = useStore(state => state.accounts);
-
 	const deleteBankaccount = useStore(state => state.deleteBankaccount);
 	const navigate = useNavigate();
 	const sensors = [useSensor(PointerSensor)];
@@ -44,6 +43,7 @@ export default function BankAccounts() {
 								bankName={bankName}
 								value={value}
 								onDelete={() => {
+									setItems(accounts);
 									deleteBankaccount(id);
 								}}
 								onNavigate={() => {

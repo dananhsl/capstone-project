@@ -1,6 +1,6 @@
 import {useSortable} from '@dnd-kit/sortable';
 
-import {Section} from './styled';
+import {Section, DragHandle, Content} from './styled';
 
 export default function BankAccount(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
@@ -13,19 +13,22 @@ export default function BankAccount(props) {
 	};
 	return (
 		<>
-			<Section ref={setNodeRef} {...attributes} {...listeners} style={style}>
-				<h2>{props.accountName}</h2>
-				<h3>{props.bankName}</h3>
-				<p>{props.value} €</p>
-				<button type="button" onClick={props.onNavigate}>
-					Transactions
-				</button>
-				<button type="button" onClick={props.onEdit}>
-					Edit
-				</button>
-				<button type="button" onClick={props.onDelete}>
-					Delete
-				</button>
+			<Section style={style}>
+				<DragHandle ref={setNodeRef} {...attributes} {...listeners} />
+				<Content>
+					<h2>{props.accountName}</h2>
+					<h3>{props.bankName}</h3>
+					<p>{props.value} €</p>
+					<button type="button" onClick={props.onNavigate}>
+						Transactions
+					</button>
+					<button type="button" onClick={props.onEdit}>
+						Edit
+					</button>
+					<button type="button" onClick={props.onDelete}>
+						Delete
+					</button>
+				</Content>
 			</Section>
 		</>
 	);
