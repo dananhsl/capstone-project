@@ -122,29 +122,36 @@ export const categories = [
 	{
 		id: 'c-1',
 		name: 'hobbies and free time',
+		transactions: ['t-1', 't-2'],
 	},
 	{
 		id: 'c-2',
 		name: 'groceries',
+		transactions: ['t-3', 't-4'],
 	},
 	{
 		id: 'c-3',
 		name: 'other',
+		transactions: ['t-5', 't-9'],
 	},
 	{
 		id: 'c-4',
 		name: 'gasoline',
+		transactions: ['t-8'],
 	},
 	{
 		id: 'c-5',
 		name: 'insurance',
+		transactions: ['t-1', 't-2'],
 	},
 	{
 		id: 'c-6',
 		name: 'subscriptions',
+		transactions: ['t-6'],
 	},
 	{
 		id: 'c-7',
 		name: 'rent',
+		transactions: ['t-7'],
 	},
 ];
