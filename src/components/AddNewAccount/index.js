@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore.js';
+import {BackButton} from '../AddTransaction/styled.js';
 
 import {Form} from './styled.js';
 
@@ -29,6 +30,14 @@ export default function AddNewBankAccount() {
 	}, [currentAccount]);
 	return (
 		<>
+			<BackButton
+				type="button"
+				onClick={() => {
+					navigate('/');
+				}}
+			>
+				Go back
+			</BackButton>
 			<Form
 				onSubmit={event => {
 					event.preventDefault();

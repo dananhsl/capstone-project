@@ -4,6 +4,8 @@ import {useNavigate, useParams} from 'react-router-dom';
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
+import {BackButton} from './styled';
+
 export default function AddTransaction() {
 	const initialValue = {date: '', change: '', note: '', category: ''};
 	const [transaction, setTransaction] = useState(initialValue);
@@ -30,6 +32,14 @@ export default function AddTransaction() {
 
 	return (
 		<>
+			<BackButton
+				type="button"
+				onClick={() => {
+					navigate('/' + accountID);
+				}}
+			>
+				Go back
+			</BackButton>
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
