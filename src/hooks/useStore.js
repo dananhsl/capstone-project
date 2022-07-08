@@ -2,7 +2,7 @@ import {nanoid} from 'nanoid';
 import create from 'zustand';
 
 import {accounts, transactions, categories} from '../db.js';
-
+console.log('HELLO WORLD');
 const useStore = create((set, get) => ({
 	accounts: [...accounts],
 	transactions: [...transactions],
