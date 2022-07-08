@@ -1,5 +1,4 @@
 import {useState} from 'react';
-
 import {useNavigate, useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
