@@ -82,6 +82,8 @@ const useStore = create((set, get) => ({
 			const index = state.transactions.findIndex(transaction => transaction.id === id);
 			const transactions = state.transactions.map(transaction => ({...transaction}));
 			transactions[index] = {...transactions[index], ...partial};
+			console.log(state.categories);
+			state.changeTransactionCategory(partial.id, partial.categoryId);
 			return {transactions};
 		});
 	},
@@ -90,6 +92,19 @@ const useStore = create((set, get) => ({
 			return {
 				transactions: state.transactions.filter(transaction => transaction.id !== id),
 			};
+		});
+	},
+	changeTransactionCategory(transactionId, newCategoryId) {
+		set(state => {
+			const category = state.categories.filter(category =>
+				category.transactions.includes(transactionId)
+			);
+			const index = category[0].transactions.indexOf(transactionId);
+			category[0].transactions.splice(index, 1);
+			const updatedCategory = categories.filter(category_ => category_.id === newCategoryId);
+			updatedCategory[0].transactions.push(transactionId);
+			console.log(state.categories);
+			return {};
 		});
 	},
 }));
