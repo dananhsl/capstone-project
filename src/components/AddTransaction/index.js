@@ -14,7 +14,6 @@ export default function AddTransaction() {
 	const categories = useStore(state => state.categories);
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
-	console.log('HELLO WORLD');
 
 	return (
 		<>
