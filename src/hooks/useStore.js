@@ -77,14 +77,22 @@ const useStore = create((set, get) => ({
 			};
 		});
 	},
-	editTransaction(id, partial) {
+	editTransaction(id, update) {
 		set(state => {
-			const index = state.transactions.findIndex(transaction => transaction.id === id);
-			const transactions = state.transactions.map(transaction => ({...transaction}));
-			transactions[index] = {...transactions[index], ...partial};
-			setTimeout(console.log(state.categories), 2000);
-			state.changeTransactionCategory(partial.id, partial.categoryId);
-			return {transactions};
+			const transactions = state.transactions.map(transaction => {
+				return transaction.id === id ? {...update, id} : transaction;
+			});
+			const categories = state.categories.map(category => {
+				const index = category.transactions.indexOf(id);
+				if (index > -1) {
+					category.transactions.splice(index, 1);
+				}
+				if (category.id === update.categoryId) {
+					category.transactions.push(id);
+				}
+				return category;
+			});
+			return {transactions, categories};
 		});
 	},
 	deleteTransaction(id) {
@@ -92,19 +100,6 @@ const useStore = create((set, get) => ({
 			return {
 				transactions: state.transactions.filter(transaction => transaction.id !== id),
 			};
-		});
-	},
-	changeTransactionCategory(transactionId, newCategoryId) {
-		set(state => {
-			const category = state.categories.filter(category =>
-				category.transactions.includes(transactionId)
-			);
-			const index = category[0].transactions.indexOf(transactionId);
-			category[0].transactions.splice(index, 1);
-			const updatedCategory = categories.filter(category_ => category_.id === newCategoryId);
-			updatedCategory[0].transactions.push(transactionId);
-			console.log(state.categories);
-			return {};
 		});
 	},
 }));

@@ -1,32 +1,19 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
+const initialValue = {date: '', change: '', note: '', categoryId: ''};
 export default function AddTransaction() {
-	const initialValue = {date: '', change: '', note: '', categoryId: ''};
-	const [transaction, setTransaction] = useState(initialValue);
-
 	const {accountID, transactionID} = useParams();
 	const currentTransaction = useStore(state =>
-		state.transactions.find(transaction => transaction.id === transactionID)
+		state.transactions.find(transaction_ => transactionID && transaction_.id === transactionID)
 	);
+	const [transaction, setTransaction] = useState(currentTransaction ?? initialValue);
 	const categories = useStore(state => state.categories);
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
-
-	useEffect(() => {
-		if (currentTransaction) {
-			setTransaction({
-				id: currentTransaction.id,
-				date: currentTransaction.date,
-				change: currentTransaction.change,
-				note: currentTransaction.note,
-				categoryId: currentTransaction.categoryId,
-			});
-		}
-	}, [currentTransaction]);
 
 	return (
 		<>
@@ -39,7 +26,7 @@ export default function AddTransaction() {
 					} else {
 						addTransaction(accountID, transaction);
 					}
-					setTransaction(initialValue);
+					event.target.reset();
 				}}
 			>
 				<label htmlFor="date">Date</label>
