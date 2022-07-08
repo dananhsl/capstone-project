@@ -82,7 +82,7 @@ const useStore = create((set, get) => ({
 			const index = state.transactions.findIndex(transaction => transaction.id === id);
 			const transactions = state.transactions.map(transaction => ({...transaction}));
 			transactions[index] = {...transactions[index], ...partial};
-			console.log(state.categories);
+			setTimeout(console.log(state.categories), 2000);
 			state.changeTransactionCategory(partial.id, partial.categoryId);
 			return {transactions};
 		});
