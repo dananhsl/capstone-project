@@ -88,7 +88,6 @@ const useStore = create(
 					};
 				});
 			},
-		}),
 	move(previousIndex, nextIndex) {
 		set(state => {
 			const accounts = [...state.accounts];
