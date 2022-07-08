@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
@@ -14,6 +14,7 @@ export default function AddTransaction() {
 	);
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (currentTransaction) {
@@ -39,6 +40,7 @@ export default function AddTransaction() {
 						addTransaction(accountID, transaction);
 					}
 					setTransaction(initialValue);
+					navigate('/' + accountID);
 				}}
 			>
 				<label htmlFor="date">Date</label>
