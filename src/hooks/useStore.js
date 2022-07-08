@@ -88,17 +88,17 @@ const useStore = create(
 					};
 				});
 			},
-	move(previousIndex, nextIndex) {
-		set(state => {
-			const accounts = [...state.accounts];
-			const account = accounts.splice(previousIndex, 1);
-			accounts.splice(nextIndex, 0, ...account);
-			return {accounts};
-		});
-	},
-	}),
-  {name: 'Digibook_data'}
-}));
-
+			move(previousIndex, nextIndex) {
+				set(state => {
+					const accounts = [...state.accounts];
+					const account = accounts.splice(previousIndex, 1);
+					accounts.splice(nextIndex, 0, ...account);
+					return {accounts};
+				});
+			},
+		}),
+		{name: 'Digibook_data'}
+	)
+);
 
 export default useStore;
