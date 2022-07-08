@@ -56,7 +56,6 @@ const useStore = create(
 					const {accounts} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
-
 					return {
 						accounts: [...accounts],
 						transactions: [
@@ -90,8 +89,16 @@ const useStore = create(
 				});
 			},
 		}),
-		{name: 'Digibook_data'}
-	)
-);
+	move(previousIndex, nextIndex) {
+		set(state => {
+			const accounts = [...state.accounts];
+			const account = accounts.splice(previousIndex, 1);
+			accounts.splice(nextIndex, 0, ...account);
+			return {accounts};
+		});
+	}),
+  {name: 'Digibook_data'}
+}));
+
 
 export default useStore;
