@@ -96,6 +96,7 @@ const useStore = create(
 			accounts.splice(nextIndex, 0, ...account);
 			return {accounts};
 		});
+	},
 	}),
   {name: 'Digibook_data'}
 }));
