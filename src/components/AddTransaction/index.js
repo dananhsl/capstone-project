@@ -1,10 +1,17 @@
+
 import {useState} from 'react';
 import {useParams} from 'react-router-dom';
+
+import {useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
+
+import {BackButton} from './styled';
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
+
 export default function AddTransaction() {
 	const {accountID, transactionID} = useParams();
 	const currentTransaction = useStore(state =>
@@ -14,9 +21,18 @@ export default function AddTransaction() {
 	const categories = useStore(state => state.categories);
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
+	const navigate = useNavigate();
 
 	return (
 		<>
+			<BackButton
+				type="button"
+				onClick={() => {
+					navigate('/' + accountID);
+				}}
+			>
+				Go back
+			</BackButton>
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
@@ -27,6 +43,8 @@ export default function AddTransaction() {
 						addTransaction(accountID, transaction);
 					}
 					event.target.reset();
+					navigate('/' + accountID);
+
 				}}
 			>
 				<label htmlFor="date">Date</label>
