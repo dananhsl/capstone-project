@@ -2,14 +2,15 @@ import {nanoid} from 'nanoid';
 import create from 'zustand';
 import {persist} from 'zustand/middleware';
 
-import {accounts, transactions} from '../db.js';
+import {accounts, transactions,categories} from '../db.js';
 
 const useStore = create(
 	persist(
-		(set, get) => ({
-			accounts: [...accounts],
-			transactions: [...transactions],
-		getAccountWithData(id) {
+	(set, get) => ({
+		accounts: [...accounts],
+		transactions: [...transactions],
+		categories:[...categories],	
+	getAccountWithData(id) {
 				const {accounts, transactions} = get();
 				const account = accounts.find(account_ => account_.id === id);
 				return {
@@ -58,27 +59,27 @@ const useStore = create(
 					};
 				});
 			},
-			addTransaction: (accountId, transaction) => {
-        set(state => {
-          const transactionId = nanoid();
-          const {accounts} = get();
-          const index = accounts.findIndex(account => account.id === accountId);
-          accounts[index].transactions.push(transactionId);
-          const index2 = categories.findIndex(category => category.id === transaction.categoryId);
-          categories[index2].transactions.push(transactionId);
-          return {
-            accounts: [...accounts],
-            transactions: [
-              ...state.transactions,
-              {
-                id: transactionId,
-                accountID: accountId,
-                ...transaction,
-              },
-            ],
-          };
-        });
-      },
+	addTransaction: (accountId, transaction) => {
+		set(state => {
+			const transactionId = nanoid();
+			const {accounts} = get();
+			const index = accounts.findIndex(account => account.id === accountId);
+			accounts[index].transactions.push(transactionId);
+			const index2 = categories.findIndex(category => category.id === transaction.categoryId);
+			categories[index2].transactions.push(transactionId);
+			return {
+				accounts: [...accounts],
+				transactions: [
+					...state.transactions,
+					{
+						id: transactionId,
+						accountID: accountId,
+						...transaction,
+					},
+				],
+			};
+		});
+	},
       editTransaction(id, update) {
         set(state => {
           const transactions = state.transactions.map(transaction => {
