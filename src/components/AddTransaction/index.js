@@ -1,34 +1,23 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
+
 import {BackButton} from './styled';
+const initialValue = {date: '', change: '', note: '', categoryId: ''};
 
 export default function AddTransaction() {
-	const initialValue = {date: '', change: '', note: '', category: ''};
-	const [transaction, setTransaction] = useState(initialValue);
-
 	const {accountID, transactionID} = useParams();
 	const currentTransaction = useStore(state =>
-		state.transactions.find(transaction => transaction.id === transactionID)
+		state.transactions.find(transaction_ => transactionID && transaction_.id === transactionID)
 	);
+	const [transaction, setTransaction] = useState(currentTransaction ?? initialValue);
+	const categories = useStore(state => state.categories);
 	const addTransaction = useStore(state => state.addTransaction);
 	const editTransaction = useStore(state => state.editTransaction);
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (currentTransaction) {
-			setTransaction({
-				id: currentTransaction.id,
-				date: currentTransaction.date,
-				change: currentTransaction.change,
-				note: currentTransaction.note,
-				category: currentTransaction.category,
-			});
-		}
-	}, [currentTransaction]);
 
 	return (
 		<>
@@ -49,8 +38,9 @@ export default function AddTransaction() {
 					} else {
 						addTransaction(accountID, transaction);
 					}
-					setTransaction(initialValue);
+					event.target.reset();
 					navigate('/' + accountID);
+
 				}}
 			>
 				<label htmlFor="date">Date</label>
@@ -91,26 +81,24 @@ export default function AddTransaction() {
 				></input>
 
 				<label htmlFor="categorieMenu">Select a fitting category</label>
-				<input
+
+				<select
 					id="categorieMenu"
-					list="categories"
-					value={transaction.category}
 					onChange={event => {
-						setTransaction({...transaction, category: event.target.value});
+						setTransaction({
+							...transaction,
+							categoryId: event.target.value,
+						});
 					}}
-					aria-label="Select a category in the Menu"
-					placeholder="select a category"
-				></input>
-				<datalist id="categories">
-					<option value="household products" />
-					<option value="hobbies and free time" />
-					<option value="groceries" />
-					<option value="other" />
-					<option value="gasoline" />
-					<option value="insurance" />
-					<option value="subscriptions" />
-					<option value="rent" />
-				</datalist>
+				>
+					{categories.map(category => {
+						return (
+							<option key={category.id} value={category.id}>
+								{category.name}
+							</option>
+						);
+					})}
+				</select>
 				<button type="submit">Submit</button>
 			</Form>
 		</>
