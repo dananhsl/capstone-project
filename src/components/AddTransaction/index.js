@@ -4,7 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
-
 import {BackButton} from './styled';
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
 
@@ -40,7 +39,6 @@ export default function AddTransaction() {
 					}
 					event.target.reset();
 					navigate('/' + accountID);
-
 				}}
 			>
 				<label htmlFor="date">Date</label>
@@ -63,7 +61,7 @@ export default function AddTransaction() {
 						setTransaction({...transaction, change: event.target.value});
 					}}
 					type="text"
-					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
+					pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
 					aria-label="Enter the change value for that transaction"
 					placeholder="500"
 				></input>
@@ -99,6 +97,28 @@ export default function AddTransaction() {
 						);
 					})}
 				</select>
+				<input
+					id="income"
+					checked={transaction.change > 0}
+					type="radio"
+					value="income"
+					name="transactionType"
+					onChange={() => {
+						setTransaction({...transaction, change: transaction.change * -1});
+					}}
+				/>
+				<label htmlFor="income">Income</label>
+				<input
+					id="expense"
+					checked={transaction.change < 0}
+					type="radio"
+					value="expense"
+					name="transactionType"
+					onChange={() => {
+						setTransaction({...transaction, change: transaction.change * -1});
+					}}
+				/>
+				<label htmlFor="expense">Expense</label>
 				<button type="submit">Submit</button>
 			</Form>
 		</>
