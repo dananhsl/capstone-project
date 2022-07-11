@@ -19,7 +19,7 @@ export default function AddTransaction() {
 	const navigate = useNavigate();
 
 	function toggleIncomeExpense() {
-		setTransaction({...transaction, change: transaction.change * -1});
+		setTransaction({...transaction, change: (transaction.change * -1).toFixed(2)});
 	}
 
 	return (
@@ -35,6 +35,7 @@ export default function AddTransaction() {
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
+					transaction.change = parseFloat(transaction.change);
 					if (transactionID) {
 						editTransaction(transactionID, transaction);
 						alert('edited');
@@ -70,7 +71,7 @@ export default function AddTransaction() {
 					type="text"
 					pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
 					aria-label="Enter the change value for that transaction"
-					placeholder="500"
+					placeholder="500.00"
 				></input>
 
 				<label htmlFor="note">Write a describtive note</label>
@@ -96,6 +97,7 @@ export default function AddTransaction() {
 						});
 					}}
 				>
+					<option value="">Please select a category</option>
 					{categories.map(category => {
 						return (
 							<option key={category.id} value={category.id}>
