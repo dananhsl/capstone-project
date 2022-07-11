@@ -21,6 +21,7 @@ export default function App() {
 					path="/transaction/edit/:accountID/:transactionID"
 					element={<FormTransaction />}
 				/>
+				<Route path="/transaction/add/:accountID" element={<FormTransaction />} />
 			</Routes>
 		</>
 	);
