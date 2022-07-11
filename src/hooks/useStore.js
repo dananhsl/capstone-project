@@ -64,10 +64,10 @@ const useStore = create(
 			addTransaction: (accountId, transaction) => {
 				set(state => {
 					const transactionId = nanoid();
-					const {accounts} = get();
+					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
-					accounts[index].value += transaction.change;
+					accounts[index].value += parseFloat(transaction.change);
 					accounts[index].value = Math.round(accounts[index].value * 100) / 100;
 					const index2 = categories.findIndex(
 						category => category.id === transaction.categoryId
@@ -123,7 +123,7 @@ const useStore = create(
 						account => account.id === transaction.accountID
 					);
 					accounts[index].value -= transaction.change;
-					accounts[index].value = Math.round(accounts[index].value * 100) / 10;
+					accounts[index].value = Math.round(accounts[index].value * 100) / 100;
 					const index2 = categories.findIndex(
 						category => category.id === transaction.categoryId
 					);

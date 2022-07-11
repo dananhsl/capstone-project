@@ -18,6 +18,10 @@ export default function AddTransaction() {
 	const editTransaction = useStore(state => state.editTransaction);
 	const navigate = useNavigate();
 
+	function toggleIncomeExpense() {
+		setTransaction({...transaction, change: transaction.change * -1});
+	}
+
 	return (
 		<>
 			<BackButton
@@ -58,7 +62,10 @@ export default function AddTransaction() {
 					id="changeValue"
 					value={transaction.change}
 					onChange={event => {
-						setTransaction({...transaction, change: event.target.value});
+						setTransaction({
+							...transaction,
+							change: event.target.value.replace(',', '.'),
+						});
 					}}
 					type="text"
 					pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
@@ -104,7 +111,7 @@ export default function AddTransaction() {
 					value="income"
 					name="transactionType"
 					onChange={() => {
-						setTransaction({...transaction, change: transaction.change * -1});
+						toggleIncomeExpense();
 					}}
 				/>
 				<label htmlFor="income">Income</label>
@@ -115,7 +122,7 @@ export default function AddTransaction() {
 					value="expense"
 					name="transactionType"
 					onChange={() => {
-						setTransaction({...transaction, change: transaction.change * -1});
+						toggleIncomeExpense();
 					}}
 				/>
 				<label htmlFor="expense">Expense</label>
