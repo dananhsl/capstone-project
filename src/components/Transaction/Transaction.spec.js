@@ -8,8 +8,6 @@ const change = 42.42;
 const date = '2022-07-07';
 const note = 'cloth';
 const category = 'hobbies and free time';
-const editTxt = 'Edit';
-const deleteTxt = 'Delete';
 
 describe('Transaction', () => {
 	it('should render correctly', () => {
@@ -20,8 +18,8 @@ describe('Transaction', () => {
 		const dateTest = screen.getByText(date);
 		const noteTest = screen.getByText(note);
 		const categoryTest = screen.getByText(category);
-		const editButton = screen.getByRole('button', {name: editTxt});
-		const deleteButton = screen.getByRole('button', {name: deleteTxt});
+		const editButton = screen.getByRole('button', {name: 'Edit'});
+		const deleteButton = screen.getByRole('button', {name: 'Delete'});
 		expect(changeTest).toBeInTheDocument();
 		expect(dateTest).toBeInTheDocument();
 		expect(noteTest).toBeInTheDocument();
@@ -40,7 +38,7 @@ describe('Transaction', () => {
 				onEdit={handleClick}
 			></Transaction>
 		);
-		const editButton = screen.getByRole('button', {name: editTxt});
+		const editButton = screen.getByRole('button', {name: 'Edit'});
 		await userEvent.click(editButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -55,7 +53,7 @@ describe('Transaction', () => {
 				deleteTransaction={handleClick}
 			></Transaction>
 		);
-		const deleteButton = screen.getByRole('button', {name: deleteTxt});
+		const deleteButton = screen.getByRole('button', {name: 'Delete'});
 		await userEvent.click(deleteButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
