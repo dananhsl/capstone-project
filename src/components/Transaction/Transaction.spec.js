@@ -14,17 +14,14 @@ const deleteTxt = 'Delete';
 describe('Transaction', () => {
 	it('should render correctly', () => {
 		render(
-			<Transaction change={change} date={date} note={note} category={category}>
-				<button>{editTxt}</button>
-				<button>{deleteTxt}</button>
-			</Transaction>
+			<Transaction change={change} date={date} note={note} category={category}></Transaction>
 		);
 		const changeTest = screen.getByText(change + ' €');
 		const dateTest = screen.getByText(date);
 		const noteTest = screen.getByText(note);
 		const categoryTest = screen.getByText(category);
-		const editButton = screen.getByText(editTxt);
-		const deleteButton = screen.getByText(deleteTxt);
+		const editButton = screen.getByRole('button', {name: editTxt});
+		const deleteButton = screen.getByRole('button', {name: deleteTxt});
 		expect(changeTest).toBeInTheDocument();
 		expect(dateTest).toBeInTheDocument();
 		expect(noteTest).toBeInTheDocument();
@@ -41,12 +38,9 @@ describe('Transaction', () => {
 				note={note}
 				category={category}
 				onEdit={handleClick}
-			>
-				<button onClick={handleClick}>{editTxt}</button>
-				<button>{deleteTxt}</button>
-			</Transaction>
+			></Transaction>
 		);
-		const editButton = screen.getByText(editTxt);
+		const editButton = screen.getByRole('button', {name: editTxt});
 		await userEvent.click(editButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -59,12 +53,9 @@ describe('Transaction', () => {
 				note={note}
 				category={category}
 				deleteTransaction={handleClick}
-			>
-				<button>{editTxt}</button>
-				<button onClick={handleClick}>{deleteTxt}</button>
-			</Transaction>
+			></Transaction>
 		);
-		const deleteButton = screen.getByText(deleteTxt);
+		const deleteButton = screen.getByRole('button', {name: deleteTxt});
 		await userEvent.click(deleteButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
