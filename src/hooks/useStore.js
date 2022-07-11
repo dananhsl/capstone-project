@@ -117,10 +117,27 @@ const useStore = create(
 			},
 			deleteTransaction(id) {
 				set(state => {
+					const {transactions, accounts} = get();
+					const transaction = transactions.find(transaction_ => transaction_.id === id);
+					const index = accounts.findIndex(
+						account => account.id === transaction.accountID
+					);
+					accounts[index].value -= transaction.change;
+					accounts[index].value = Math.round(accounts[index].value * 100) / 10;
+					const index2 = categories.findIndex(
+						category => category.id === transaction.categoryId
+					);
+					categories[index2].transactions.splice(
+						categories[index2].transactions.indexOf(id),
+						1
+					);
+
 					return {
 						transactions: state.transactions.filter(
 							transaction => transaction.id !== id
 						),
+						accounts: [...accounts],
+						categories: [...categories],
 					};
 				});
 			},
