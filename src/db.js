@@ -29,7 +29,7 @@ export const transactions = [
 	{
 		id: 't-1',
 		accountID: 'a-1',
-		date: '2022-07-06',
+		date: '2022-07-12',
 		dateCreated: 'optional',
 		dateUpdated: 'optional',
 		change: 40.31,
@@ -49,7 +49,7 @@ export const transactions = [
 	{
 		id: 't-3',
 		accountID: 'a-2',
-		date: '2022-07-06',
+		date: '2022-07-12',
 		dateCreated: 'optional',
 		dateUpdated: 'optional',
 		change: 120.31,

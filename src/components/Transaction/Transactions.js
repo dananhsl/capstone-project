@@ -13,14 +13,43 @@ export default function Transactions() {
 	const account = getAccountWithData(accountID);
 	const navigate = useNavigate();
 	const deleteTransaction = useStore(state => state.deleteTransaction);
-
+	const filterTransactions = useStore(state => state.filterTransactions);
+	const transactionsFiltered = useStore(state => state.transactionsFiltered);
+	const categories = useStore(state => state.categories);
+	const transactionSelector =
+		transactionsFiltered.length === 0 ? account.Transactions : transactionsFiltered;
 	return (
 		<>
-			{account.Transactions.map(({id, date, change, note}) => {
+			<input
+				id="date"
+				onChange={event => {
+					filterTransactions('', event.target.value);
+				}}
+				type="date"
+				aria-label="Enter the date of the transaction"
+			></input>
+			<select
+				id="categorieMenu"
+				onChange={event => {
+					filterTransactions(event.target.value, '');
+				}}
+			>
+				<option value={''}>All</option>s
+				{categories.map(category => {
+					return (
+						<option key={category.id} value={category.id}>
+							{category.name}
+						</option>
+					);
+				})}
+			</select>
+
+			{transactionSelector.map(({id, date, change, note}) => {
 				const transaction = getTransactionWithData(id);
 				return (
 					<Transaction
 						key={id}
+						id={id}
 						date={date}
 						change={change}
 						note={note}
