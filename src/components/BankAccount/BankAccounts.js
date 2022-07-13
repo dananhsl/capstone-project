@@ -1,8 +1,10 @@
 import {closestCenter, DndContext, PointerSensor, useSensor} from '@dnd-kit/core';
 import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {useNavigate} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore';
+import {notifyDelete} from '../Toasts/Toasts';
 
 import BankAccount from './index.js';
 
@@ -41,18 +43,22 @@ export default function BankAccounts() {
 								value={value}
 								onDelete={() => {
 									deleteBankaccount(id);
+									notifyDelete();
 								}}
 								onNavigate={() => {
 									navigate('/' + id);
 								}}
 								onEdit={() => {
-									navigate('/bankAccount/edit/' + id);
+									setTimeout(() => {
+										navigate('/bankAccount/edit/' + id);
+									}, 2500);
 								}}
 							/>
 						);
 					})}
 				</SortableContext>
 			</DndContext>
+			<ToastContainer />
 		</>
 	);
 }
