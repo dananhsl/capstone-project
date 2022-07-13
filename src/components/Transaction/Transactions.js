@@ -58,6 +58,7 @@ export default function Transactions() {
 						}}
 						deleteTransaction={() => {
 							deleteTransaction(id);
+							navigate('/' + accountID);
 						}}
 					/>
 				);

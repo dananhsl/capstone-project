@@ -4,7 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
 
-
 import {BackButton} from './styled';
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
 
@@ -19,6 +18,10 @@ export default function AddTransaction() {
 	const editTransaction = useStore(state => state.editTransaction);
 	const navigate = useNavigate();
 
+	function toggleIncomeExpense() {
+		setTransaction({...transaction, change: (transaction.change * -1).toFixed(2)});
+	}
+
 	return (
 		<>
 			<BackButton
@@ -32,6 +35,7 @@ export default function AddTransaction() {
 			<Form
 				onSubmit={event => {
 					event.preventDefault();
+					transaction.change = parseFloat(transaction.change);
 					if (transactionID) {
 						editTransaction(transactionID, transaction);
 						alert('edited');
@@ -40,7 +44,6 @@ export default function AddTransaction() {
 					}
 					event.target.reset();
 					navigate('/' + accountID);
-
 				}}
 			>
 				<label htmlFor="date">Date</label>
@@ -60,12 +63,15 @@ export default function AddTransaction() {
 					id="changeValue"
 					value={transaction.change}
 					onChange={event => {
-						setTransaction({...transaction, change: event.target.value});
+						setTransaction({
+							...transaction,
+							change: event.target.value.replace(',', '.'),
+						});
 					}}
 					type="text"
-					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
+					pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
 					aria-label="Enter the change value for that transaction"
-					placeholder="500"
+					placeholder="500.00"
 				></input>
 
 				<label htmlFor="note">Write a describtive note</label>
@@ -91,6 +97,7 @@ export default function AddTransaction() {
 						});
 					}}
 				>
+					<option value="">Please select a category</option>
 					{categories.map(category => {
 						return (
 							<option key={category.id} value={category.id}>
@@ -99,6 +106,28 @@ export default function AddTransaction() {
 						);
 					})}
 				</select>
+				<input
+					id="income"
+					checked={transaction.change > 0}
+					type="radio"
+					value="income"
+					name="transactionType"
+					onChange={() => {
+						toggleIncomeExpense();
+					}}
+				/>
+				<label htmlFor="income">Income</label>
+				<input
+					id="expense"
+					checked={transaction.change < 0}
+					type="radio"
+					value="expense"
+					name="transactionType"
+					onChange={() => {
+						toggleIncomeExpense();
+					}}
+				/>
+				<label htmlFor="expense">Expense</label>
 				<button type="submit">Submit</button>
 			</Form>
 		</>

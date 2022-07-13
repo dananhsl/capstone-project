@@ -68,6 +68,11 @@ const useStore = create(
 					const {accounts} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
+					const {accounts, categories} = get();
+					const index = accounts.findIndex(account => account.id === accountId);
+					accounts[index].transactions.push(transactionId);
+					accounts[index].value += parseFloat(transaction.change);
+					accounts[index].value = Math.round(accounts[index].value * 100) / 100;
 					const index2 = categories.findIndex(
 						category => category.id === transaction.categoryId
 					);
@@ -87,6 +92,9 @@ const useStore = create(
 			},
 			editTransaction(id, update) {
 				set(state => {
+					const oldValue = state.transactions.find(
+						transaction => transaction.id === id
+					).change;
 					const transactions = state.transactions.map(transaction => {
 						return transaction.id === id ? {...update, id} : transaction;
 					});
@@ -100,15 +108,40 @@ const useStore = create(
 						}
 						return category;
 					});
-					return {transactions, categories};
+					if (update.change !== oldValue) {
+						const index = state.accounts.findIndex(
+							account => account.id === update.accountID
+						);
+						state.accounts[index].value += update.change - oldValue;
+						state.accounts[index].value =
+							Math.round(state.accounts[index].value * 100) / 100;
+					}
+					return {transactions, categories, accounts: [...state.accounts]};
 				});
 			},
 			deleteTransaction(id) {
 				set(state => {
+					const {transactions, accounts} = get();
+					const transaction = transactions.find(transaction_ => transaction_.id === id);
+					const index = accounts.findIndex(
+						account => account.id === transaction.accountID
+					);
+					accounts[index].value -= transaction.change;
+					accounts[index].value = Math.round(accounts[index].value * 100) / 100;
+					const index2 = categories.findIndex(
+						category => category.id === transaction.categoryId
+					);
+					categories[index2].transactions.splice(
+						categories[index2].transactions.indexOf(id),
+						1
+					);
+
 					return {
 						transactions: state.transactions.filter(
 							transaction => transaction.id !== id
 						),
+						accounts: [...accounts],
+						categories: [...categories],
 					};
 				});
 			},
@@ -138,18 +171,6 @@ const useStore = create(
 								),
 							],
 						};
-						// does not work rn
-						// } else if (categoryId && date) {
-						// 	console.log('categoryID && date ');
-						// 	return {
-						// 		transactionsFiltered: [
-						// 			...state.transactions.filter(
-						// 				transaction =>
-						// 					transaction.date === date &&
-						// 					transaction.categoryId === categoryId
-						// 			),
-						// 		],
-						// 	};
 					} else {
 						return {
 							transactionsFiltered: [],
