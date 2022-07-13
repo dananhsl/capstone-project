@@ -44,7 +44,6 @@ export default function AddTransaction() {
 					} else {
 						addTransaction(accountID, transaction);
 						notifyAdd();
-						console.log('added');
 					}
 					event.target.reset();
 					setTimeout(() => {
