@@ -10,6 +10,7 @@ const useStore = create(
 			accounts: [...accounts],
 			transactions: [...transactions],
 			categories: [...categories],
+			transactionsFiltered: [],
 			getAccountWithData(id) {
 				const {accounts, transactions} = get();
 				const account = accounts.find(account_ => account_.id === id);
@@ -63,7 +64,7 @@ const useStore = create(
 			},
 			addTransaction: (accountId, transaction) => {
 				set(state => {
-					const transactionId = nanoid();
+					const transactionId = nanoid();					
 					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
@@ -147,6 +148,57 @@ const useStore = create(
 					const account = accounts.splice(previousIndex, 1);
 					accounts.splice(nextIndex, 0, ...account);
 					return {accounts};
+				});
+			},
+			filterAllTransactions(categoryId, date) {
+				set(state => {
+					if (categoryId && date === '') {
+						return {
+							transactionsFiltered: [
+								...state.transactions.filter(
+									transaction => transaction.categoryId === categoryId
+								),
+							],
+						};
+					} else if (!categoryId && date) {
+						return {
+							transactionsFiltered: [
+								...state.transactions.filter(
+									transaction => transaction.date === date
+								),
+							],
+						};
+					} else {
+						return {
+							transactionsFiltered: [],
+						};
+					}
+				});
+			},
+			filterAccountTransactions(accountObj, categoryId, date) {
+				set(() => {
+					const account = accountObj;
+					if (categoryId && date === '') {
+						return {
+							transactionsFiltered: [
+								...account.Transactions.filter(
+									transaction => transaction.categoryId === categoryId
+								),
+							],
+						};
+					} else if (!categoryId && date) {
+						return {
+							transactionsFiltered: [
+								...account.Transactions.filter(
+									transaction => transaction.date === date
+								),
+							],
+						};
+					} else {
+						return {
+							transactionsFiltered: [],
+						};
+					}
 				});
 			},
 		}),
