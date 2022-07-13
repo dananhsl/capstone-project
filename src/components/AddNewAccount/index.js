@@ -51,7 +51,9 @@ export default function AddNewBankAccount() {
 						notifyAdd();
 					}
 					setAccount(initialValue);
-					navigate('/');
+					setTimeout(() => {
+						navigate('/');
+					}, 2000);
 				}}
 			>
 				<label htmlFor="accountName">Enter the name of your Bank Account</label>

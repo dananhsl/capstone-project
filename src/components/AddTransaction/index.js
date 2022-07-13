@@ -49,7 +49,7 @@ export default function AddTransaction() {
 					event.target.reset();
 					setTimeout(() => {
 						navigate('/' + accountID);
-					}, 2500);
+					}, 2000);
 				}}
 			>
 				<label htmlFor="date">Date</label>

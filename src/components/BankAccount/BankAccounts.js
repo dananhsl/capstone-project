@@ -51,7 +51,7 @@ export default function BankAccounts() {
 								onEdit={() => {
 									setTimeout(() => {
 										navigate('/bankAccount/edit/' + id);
-									}, 2500);
+									}, 2000);
 								}}
 							/>
 						);
