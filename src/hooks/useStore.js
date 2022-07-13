@@ -19,18 +19,6 @@ const useStore = create(
 					Transactions: transactions.filter(transaction =>
 						account.transactions.includes(transaction.id)
 					),
-					transactionsFiltered: [
-						{
-							id: 't-1',
-							accountID: 'a-1',
-							date: '2022-07-12',
-							dateCreated: 'optional',
-							dateUpdated: 'optional',
-							change: 40.31,
-							note: 'cloth',
-							categoryId: 'c-1',
-						},
-					],
 				};
 			},
 			getTransactionWithData(id) {
@@ -41,7 +29,6 @@ const useStore = create(
 					Categories: categories.filter(category =>
 						transaction.categoryId.includes(category.id)
 					),
-					transactionsFiltered: [],
 				};
 			},
 			deleteBankaccount(id) {
@@ -133,11 +120,9 @@ const useStore = create(
 					return {accounts};
 				});
 			},
-			//works but on all transactions not on a specific account
-			filterTransactions(categoryId, date) {
+			filterAllTransactions(categoryId, date) {
 				set(state => {
 					if (categoryId && date === '') {
-						console.log("categoryID && date === '' ");
 						return {
 							transactionsFiltered: [
 								...state.transactions.filter(
@@ -146,7 +131,6 @@ const useStore = create(
 							],
 						};
 					} else if (!categoryId && date) {
-						console.log('!categoryID && date ');
 						return {
 							transactionsFiltered: [
 								...state.transactions.filter(
@@ -166,6 +150,32 @@ const useStore = create(
 						// 			),
 						// 		],
 						// 	};
+					} else {
+						return {
+							transactionsFiltered: [],
+						};
+					}
+				});
+			},
+			filterAccountTransactions(accountObj, categoryId, date) {
+				set(() => {
+					const account = accountObj;
+					if (categoryId && date === '') {
+						return {
+							transactionsFiltered: [
+								...account.Transactions.filter(
+									transaction => transaction.categoryId === categoryId
+								),
+							],
+						};
+					} else if (!categoryId && date) {
+						return {
+							transactionsFiltered: [
+								...account.Transactions.filter(
+									transaction => transaction.date === date
+								),
+							],
+						};
 					} else {
 						return {
 							transactionsFiltered: [],
