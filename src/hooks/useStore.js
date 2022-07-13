@@ -64,11 +64,10 @@ const useStore = create(
 			},
 			addTransaction: (accountId, transaction) => {
 				set(state => {
-					const transactionId = nanoid();
-					const {accounts} = get();
+					const transactionId = nanoid();					
+					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
-					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
 					accounts[index].value += parseFloat(transaction.change);
