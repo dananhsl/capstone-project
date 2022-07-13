@@ -68,8 +68,6 @@ const useStore = create(
 					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
-					const index = accounts.findIndex(account => account.id === accountId);
-					accounts[index].transactions.push(transactionId);
 					accounts[index].value += parseFloat(transaction.change);
 					accounts[index].value = Math.round(accounts[index].value * 100) / 100;
 					const index2 = categories.findIndex(
