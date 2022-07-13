@@ -1,7 +1,9 @@
 import {useParams} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore';
+import {notifyDelete} from '../Toasts/Toasts';
 
 import Transaction from './index.js';
 
@@ -59,10 +61,12 @@ export default function Transactions() {
 						deleteTransaction={() => {
 							deleteTransaction(id);
 							navigate('/' + accountID);
+							notifyDelete();
 						}}
 					/>
 				);
 			})}
+			<ToastContainer />
 		</>
 	);
 }

@@ -1,8 +1,10 @@
 import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore';
 import {Form} from '../AddNewAccount/styled';
+import {notifyAdd, notifyEdit} from '../Toasts/Toasts';
 
 import {BackButton} from './styled';
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
@@ -38,12 +40,15 @@ export default function AddTransaction() {
 					transaction.change = parseFloat(transaction.change);
 					if (transactionID) {
 						editTransaction(transactionID, transaction);
-						alert('edited');
+						notifyEdit();
 					} else {
 						addTransaction(accountID, transaction);
+						notifyAdd();
 					}
 					event.target.reset();
-					navigate('/' + accountID);
+					setTimeout(() => {
+						navigate('/' + accountID);
+					}, 2000);
 				}}
 			>
 				<label htmlFor="date">Date</label>
@@ -130,6 +135,7 @@ export default function AddTransaction() {
 				<label htmlFor="expense">Expense</label>
 				<button type="submit">Submit</button>
 			</Form>
+			<ToastContainer />
 		</>
 	);
 }

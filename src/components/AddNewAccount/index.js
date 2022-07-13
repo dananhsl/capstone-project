@@ -1,9 +1,11 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore.js';
 import {BackButton} from '../AddTransaction/styled.js';
+import {notifyAdd, notifyEdit} from '../Toasts/Toasts.js';
 
 import {Form} from './styled.js';
 
@@ -43,12 +45,15 @@ export default function AddNewBankAccount() {
 					event.preventDefault();
 					if (accountID) {
 						editBankAccount(accountID, account);
-						alert('Edited');
+						notifyEdit();
 					} else {
 						addBankaccount(account);
+						notifyAdd();
 					}
 					setAccount(initialValue);
-					navigate('/');
+					setTimeout(() => {
+						navigate('/');
+					}, 2000);
 				}}
 			>
 				<label htmlFor="accountName">Enter the name of your Bank Account</label>
@@ -96,6 +101,7 @@ export default function AddNewBankAccount() {
 
 				<button type="submit">Submit</button>
 			</Form>
+			<ToastContainer />
 		</>
 	);
 }
