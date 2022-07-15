@@ -64,7 +64,7 @@ const useStore = create(
 			},
 			addTransaction: (accountId, transaction) => {
 				set(state => {
-					const transactionId = nanoid();					
+					const transactionId = nanoid();
 					const {accounts, categories} = get();
 					const index = accounts.findIndex(account => account.id === accountId);
 					accounts[index].transactions.push(transactionId);
