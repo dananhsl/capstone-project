@@ -26,7 +26,7 @@ export default function Analysis() {
 		],
 		datasets: [
 			{
-				label: '# of Votes',
+				label: 'Value ',
 				data: [...displayData],
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
