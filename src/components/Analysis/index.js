@@ -17,7 +17,15 @@ export default function Analysis() {
 			return acc + transaction.change;
 		}, 0);
 	});
-
+	const options = {
+		plugins: {
+			legend: {
+				labels: {
+					color: 'white',
+				},
+			},
+		},
+	};
 	const data = {
 		labels: [
 			...categories.map(category => {
@@ -53,9 +61,5 @@ export default function Analysis() {
 		],
 	};
 
-	return (
-		<div>
-			<Pie data={data} />
-		</div>
-	);
+	return <Pie data={data} options={options} />;
 }
