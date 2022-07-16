@@ -1,16 +1,24 @@
-import {Section} from './styled';
+import {
+	Section,
+	StyledCategory,
+	StyledDate,
+	StyledNote,
+	StyledValue,
+	DeleteButton,
+	EditButton,
+} from './styled';
 
 export default function Transaction(props) {
 	return (
 		<Section>
-			<h2>{props.change} €</h2>
-			<h3>{props.date}</h3>
-			<p>{props.note}</p>
-			<p>{props.category}</p>
-			<button type="button" onClick={props.onEdit}>
+			<StyledValue change={props.change}>{props.change} €</StyledValue>
+			<StyledDate>{props.date}</StyledDate>
+			<StyledNote>{props.note}</StyledNote>
+			<StyledCategory>{props.category}</StyledCategory>
+			<EditButton type="button" onClick={props.onEdit}>
 				Edit
-			</button>
-			<button onClick={() => props.deleteTransaction(props.id)}>Delete</button>
+			</EditButton>
+			<DeleteButton onClick={() => props.deleteTransaction(props.id)}>Delete</DeleteButton>
 		</Section>
 	);
 }

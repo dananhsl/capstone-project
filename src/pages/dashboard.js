@@ -1,6 +1,5 @@
 import BankAccounts from '../components/BankAccount/BankAccounts.js';
 
-
 export default function Dashboard() {
 	return (
 		<>
