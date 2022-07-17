@@ -5,7 +5,14 @@ import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../../hooks/useStore.js';
 import {notifyAdd, notifyEdit} from '../../Toasts/Toasts.js';
-import {StyledForm, StyledArticle, StyledBackBtn} from '../styled.js';
+import {
+	StyledForm,
+	StyledArticle,
+	StyledBackBtn,
+	StyledLabel,
+	StyledInput,
+	StyledSubmitBtn,
+} from '../styled.js';
 
 export default function FormAccount() {
 	const initialValue = {name: '', value: '', transactions: [], bankName: ''};
@@ -55,8 +62,8 @@ export default function FormAccount() {
 				}}
 			>
 				<StyledArticle>
-					<label htmlFor="accountName">Account Name</label>
-					<input
+					<StyledLabel htmlFor="accountName">Account Name</StyledLabel>
+					<StyledInput
 						onChange={event => {
 							setAccount({...account, name: event.target.value});
 						}}
@@ -66,11 +73,11 @@ export default function FormAccount() {
 						required
 						aria-label="Enter the name of your Bank Account"
 						placeholder="Bargeld"
-					></input>
+					></StyledInput>
 				</StyledArticle>
 				<StyledArticle>
-					<label htmlFor="bankName">Bank Name</label>
-					<input
+					<StyledLabel htmlFor="bankName">Bank Name</StyledLabel>
+					<StyledInput
 						onChange={event => {
 							setAccount({...account, bankName: event.target.value});
 						}}
@@ -80,11 +87,11 @@ export default function FormAccount() {
 						required
 						aria-label="Enter the name of your Bank"
 						placeholder="Hosentasche"
-					></input>
+					></StyledInput>
 				</StyledArticle>
 				<StyledArticle>
-					<label htmlFor="accountValue">Current Balance</label>
-					<input
+					<StyledLabel htmlFor="accountValue">Current Balance</StyledLabel>
+					<StyledInput
 						onChange={event => {
 							setAccount({
 								...account,
@@ -98,9 +105,9 @@ export default function FormAccount() {
 						required
 						aria-label="Enter the current Value"
 						placeholder="5.25"
-					></input>
+					></StyledInput>
 				</StyledArticle>
-				<button type="submit">Submit</button>
+				<StyledSubmitBtn type="submit">Submit</StyledSubmitBtn>
 			</StyledForm>
 			<ToastContainer />
 		</>

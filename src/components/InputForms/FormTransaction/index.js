@@ -49,6 +49,7 @@ export default function FormTransaction() {
 						navigate('/' + accountID);
 					}, 2000);
 				}}
+				aria-label="Add a new Transaction"
 			>
 				<StyledArticle>
 					<label htmlFor="date">Date</label>
@@ -59,13 +60,13 @@ export default function FormTransaction() {
 							setTransaction({...transaction, date: event.target.value});
 						}}
 						type="date"
-						aria-label="Enter the date of the transaction"
+						aria-label="Enter Date of the transaction"
 						placeholder="e.g 29.06.2022"
 					></input>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="changeValue">change value</label>
+					<label htmlFor="changeValue">Value Change</label>
 					<input
 						id="changeValue"
 						value={transaction.change}
@@ -77,13 +78,13 @@ export default function FormTransaction() {
 						}}
 						type="text"
 						pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
-						aria-label="Enter the change value for that transaction"
+						aria-label="Enter Value change for the transaction"
 						placeholder="500.00"
 					></input>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="note">Write a describtive note</label>
+					<label htmlFor="note">Note</label>
 					<input
 						id="note"
 						value={transaction.note}
@@ -91,13 +92,13 @@ export default function FormTransaction() {
 							setTransaction({...transaction, note: event.target.value});
 						}}
 						type="text"
-						aria-label="Enter a decribtive note for that transaction"
+						aria-label="Enter decribtive note for the transaction"
 						placeholder="e.g. online shopping"
 					></input>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="categorieMenu">Select a fitting category</label>
+					<label htmlFor="categorieMenu">Category</label>
 					<select
 						id="categorieMenu"
 						onChange={event => {
@@ -106,6 +107,7 @@ export default function FormTransaction() {
 								categoryId: event.target.value,
 							});
 						}}
+						aria-label="Select a Category for the Transcation"
 					>
 						<option value="">Please select a category</option>
 						{categories.map(category => {
@@ -125,6 +127,7 @@ export default function FormTransaction() {
 						type="radio"
 						value="income"
 						name="transactionType"
+						aria-label="set income"
 						onChange={() => {
 							toggleIncomeExpense();
 						}}
@@ -137,6 +140,7 @@ export default function FormTransaction() {
 						type="radio"
 						value="expense"
 						name="transactionType"
+						aria-label="set expense"
 						onChange={() => {
 							toggleIncomeExpense();
 						}}
