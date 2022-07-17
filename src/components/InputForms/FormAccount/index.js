@@ -3,13 +3,13 @@ import {useNavigate} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import useStore from '../../hooks/useStore.js';
-import {BackButton} from '../AddTransaction/styled.js';
-import {notifyAdd, notifyEdit} from '../Toasts/Toasts.js';
+import useStore from '../../../hooks/useStore.js';
+import {BackButton} from '../FormTransaction/styled.js';
+import {notifyAdd, notifyEdit} from '../../Toasts/Toasts.js';
 
-import {StyledForm, StyledArticle} from './styled.js';
+import {StyledForm, StyledArticle} from '../styled.js';
 
-export default function AddNewBankAccount() {
+export default function FormAccount() {
 	const initialValue = {name: '', value: '', transactions: [], bankName: ''};
 	const [account, setAccount] = useState(initialValue);
 	const {accountID} = useParams();

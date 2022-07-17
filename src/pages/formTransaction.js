@@ -1,10 +1,10 @@
-import AddTransaction from '../components/AddTransaction';
+import FormTransaction from '../components/InputForms/FormTransaction';
 
-export default function FormTransaction() {
+export default function FormTransactionPage() {
 	return (
 		<>
 			<h1>Transaction</h1>
-			<AddTransaction />
+			<FormTransaction />
 		</>
 	);
 }

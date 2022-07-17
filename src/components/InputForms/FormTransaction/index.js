@@ -2,14 +2,14 @@ import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import useStore from '../../hooks/useStore';
-import {StyledForm} from '../AddNewAccount/styled';
-import {notifyAdd, notifyEdit} from '../Toasts/Toasts';
+import useStore from '../../../hooks/useStore';
+import {StyledForm} from '../styled';
+import {notifyAdd, notifyEdit} from '../../Toasts/Toasts';
 
 import {BackButton} from './styled';
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
 
-export default function AddTransaction() {
+export default function FormTransaction() {
 	const {accountID, transactionID} = useParams();
 	const currentTransaction = useStore(state =>
 		state.transactions.find(transaction_ => transactionID && transaction_.id === transactionID)
