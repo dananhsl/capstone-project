@@ -7,7 +7,7 @@ import useStore from '../../hooks/useStore.js';
 import {BackButton} from '../AddTransaction/styled.js';
 import {notifyAdd, notifyEdit} from '../Toasts/Toasts.js';
 
-import {Form} from './styled.js';
+import {StyledForm, StyledArticle} from './styled.js';
 
 export default function AddNewBankAccount() {
 	const initialValue = {name: '', value: '', transactions: [], bankName: ''};
@@ -40,7 +40,7 @@ export default function AddNewBankAccount() {
 			>
 				Go back
 			</BackButton>
-			<Form
+			<StyledForm
 				onSubmit={event => {
 					event.preventDefault();
 					if (accountID) {
@@ -56,51 +56,54 @@ export default function AddNewBankAccount() {
 					}, 2000);
 				}}
 			>
-				<label htmlFor="accountName">Enter the name of your Bank Account</label>
-				<input
-					onChange={event => {
-						setAccount({...account, name: event.target.value});
-					}}
-					id="inputAccountName"
-					value={account.name}
-					type="text"
-					required
-					aria-label="Enter the name of your Bank Account"
-					placeholder="Bargeld"
-				></input>
-
-				<label htmlFor="bankName">Enter the name of your Bank </label>
-				<input
-					onChange={event => {
-						setAccount({...account, bankName: event.target.value});
-					}}
-					id="inputBankName"
-					value={account.bankName}
-					type="text"
-					required
-					aria-label="Enter the name of your Bank"
-					placeholder="Hosentasche"
-				></input>
-
-				<label htmlFor="accountValue">Enter the current amount of money</label>
-				<input
-					onChange={event => {
-						setAccount({
-							...account,
-							value: event.target.value.replace(',', '.'),
-						});
-					}}
-					id="inputAccountValue"
-					value={account.value}
-					type="text"
-					pattern="([0-9]+)([,\\.]{1}[0-9]+)"
-					required
-					aria-label="Enter the current Value"
-					placeholder="5.25"
-				></input>
-
+				<StyledArticle>
+					<label htmlFor="accountName">Account Name</label>
+					<input
+						onChange={event => {
+							setAccount({...account, name: event.target.value});
+						}}
+						id="inputAccountName"
+						value={account.name}
+						type="text"
+						required
+						aria-label="Enter the name of your Bank Account"
+						placeholder="Bargeld"
+					></input>
+				</StyledArticle>
+				<StyledArticle>
+					<label htmlFor="bankName">Bank Name</label>
+					<input
+						onChange={event => {
+							setAccount({...account, bankName: event.target.value});
+						}}
+						id="inputBankName"
+						value={account.bankName}
+						type="text"
+						required
+						aria-label="Enter the name of your Bank"
+						placeholder="Hosentasche"
+					></input>
+				</StyledArticle>
+				<StyledArticle>
+					<label htmlFor="accountValue">Current Balance</label>
+					<input
+						onChange={event => {
+							setAccount({
+								...account,
+								value: event.target.value.replace(',', '.'),
+							});
+						}}
+						id="inputAccountValue"
+						value={account.value}
+						type="text"
+						pattern="([0-9]+)([,\\.]{1}[0-9]+)"
+						required
+						aria-label="Enter the current Value"
+						placeholder="5.25"
+					></input>
+				</StyledArticle>
 				<button type="submit">Submit</button>
-			</Form>
+			</StyledForm>
 			<ToastContainer />
 		</>
 	);

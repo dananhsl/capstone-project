@@ -3,7 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore';
-import {Form} from '../AddNewAccount/styled';
+import {StyledForm} from '../AddNewAccount/styled';
 import {notifyAdd, notifyEdit} from '../Toasts/Toasts';
 
 import {BackButton} from './styled';
@@ -34,7 +34,7 @@ export default function AddTransaction() {
 			>
 				Go back
 			</BackButton>
-			<Form
+			<StyledForm
 				onSubmit={event => {
 					event.preventDefault();
 					transaction.change = parseFloat(transaction.change);
@@ -134,7 +134,7 @@ export default function AddTransaction() {
 				/>
 				<label htmlFor="expense">Expense</label>
 				<button type="submit">Submit</button>
-			</Form>
+			</StyledForm>
 			<ToastContainer />
 		</>
 	);
