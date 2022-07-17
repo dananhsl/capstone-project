@@ -4,10 +4,8 @@ import {useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../../hooks/useStore.js';
-import {BackButton} from '../FormTransaction/styled.js';
 import {notifyAdd, notifyEdit} from '../../Toasts/Toasts.js';
-
-import {StyledForm, StyledArticle} from '../styled.js';
+import {StyledForm, StyledArticle, StyledBackBtn} from '../styled.js';
 
 export default function FormAccount() {
 	const initialValue = {name: '', value: '', transactions: [], bankName: ''};
@@ -32,14 +30,14 @@ export default function FormAccount() {
 	}, [currentAccount]);
 	return (
 		<>
-			<BackButton
+			<StyledBackBtn
 				type="button"
 				onClick={() => {
 					navigate('/');
 				}}
 			>
 				Go back
-			</BackButton>
+			</StyledBackBtn>
 			<StyledForm
 				onSubmit={event => {
 					event.preventDefault();
