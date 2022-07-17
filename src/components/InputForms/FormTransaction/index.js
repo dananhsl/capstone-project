@@ -4,7 +4,16 @@ import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../../hooks/useStore';
 import {notifyAdd, notifyEdit} from '../../Toasts/Toasts';
-import {StyledForm, StyledBackBtn, StyledArticle} from '../styled';
+import {
+	StyledForm,
+	StyledBackBtn,
+	StyledArticle,
+	StyledLabel,
+	StyledInput,
+	StyledSubmitBtn,
+	StyledDiv,
+	StyledSelect,
+} from '../styled';
 
 const initialValue = {date: '', change: '', note: '', categoryId: ''};
 
@@ -52,8 +61,8 @@ export default function FormTransaction() {
 				aria-label="Add a new Transaction"
 			>
 				<StyledArticle>
-					<label htmlFor="date">Date</label>
-					<input
+					<StyledLabel htmlFor="date">Date</StyledLabel>
+					<StyledInput
 						id="date"
 						value={transaction.date}
 						onChange={event => {
@@ -62,12 +71,12 @@ export default function FormTransaction() {
 						type="date"
 						aria-label="Enter Date of the transaction"
 						placeholder="e.g 29.06.2022"
-					></input>
+					></StyledInput>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="changeValue">Value Change</label>
-					<input
+					<StyledLabel htmlFor="changeValue">Value Change</StyledLabel>
+					<StyledInput
 						id="changeValue"
 						value={transaction.change}
 						onChange={event => {
@@ -80,12 +89,12 @@ export default function FormTransaction() {
 						pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
 						aria-label="Enter Value change for the transaction"
 						placeholder="500.00"
-					></input>
+					></StyledInput>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="note">Note</label>
-					<input
+					<StyledLabel htmlFor="note">Note</StyledLabel>
+					<StyledInput
 						id="note"
 						value={transaction.note}
 						onChange={event => {
@@ -94,12 +103,13 @@ export default function FormTransaction() {
 						type="text"
 						aria-label="Enter decribtive note for the transaction"
 						placeholder="e.g. online shopping"
-					></input>
+					></StyledInput>
 				</StyledArticle>
 
 				<StyledArticle>
-					<label htmlFor="categorieMenu">Category</label>
-					<select
+					<StyledLabel htmlFor="categorieMenu">Category</StyledLabel>
+
+					<StyledSelect
 						id="categorieMenu"
 						onChange={event => {
 							setTransaction({
@@ -109,7 +119,9 @@ export default function FormTransaction() {
 						}}
 						aria-label="Select a Category for the Transcation"
 					>
-						<option value="">Please select a category</option>
+						<option value="" style={{background: 'hotpink'}}>
+							Please select a category
+						</option>
 						{categories.map(category => {
 							return (
 								<option key={category.id} value={category.id}>
@@ -117,10 +129,9 @@ export default function FormTransaction() {
 								</option>
 							);
 						})}
-					</select>
+					</StyledSelect>
 				</StyledArticle>
-
-				<StyledArticle>
+				<StyledDiv>
 					<input
 						id="income"
 						checked={transaction.change > 0}
@@ -132,7 +143,7 @@ export default function FormTransaction() {
 							toggleIncomeExpense();
 						}}
 					/>
-					<label htmlFor="income">Income</label>
+					<StyledLabel htmlFor="income">Income</StyledLabel>
 
 					<input
 						id="expense"
@@ -145,10 +156,10 @@ export default function FormTransaction() {
 							toggleIncomeExpense();
 						}}
 					/>
-					<label htmlFor="expense">Expense</label>
-				</StyledArticle>
+					<StyledLabel htmlFor="expense">Expense</StyledLabel>
+				</StyledDiv>
 
-				<button type="submit">Submit</button>
+				<StyledSubmitBtn type="submit">Submit</StyledSubmitBtn>
 			</StyledForm>
 			<ToastContainer />
 		</>
