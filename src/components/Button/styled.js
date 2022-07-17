@@ -17,4 +17,11 @@ const StyledButton = styled.button`
 	}
 `;
 
+export const StyledCatButton = styled.button`
+	padding: 0.5em;
+	border: none;
+	border-radius: 50%;
+	background: linear-gradient(to bottom, var(--gradient1), var(--gradient2));
+`;
+
 export default StyledButton;

@@ -2,6 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 
 import FormAccount from './components/InputForms/FormAccount';
 import MobileNavigation from './components/Navigation/MobileNavigation';
+import AnalysisPage from './pages/analysis';
 import Dashboard from './pages/dashboard';
 import FormAccountPage from './pages/formAccount';
 import FormTransactionPage from './pages/formTransaction';
@@ -22,7 +23,9 @@ export default function App() {
 					path="/transaction/edit/:accountID/:transactionID"
 					element={<FormTransactionPage />}
 				/>
+
 				<Route path="/transaction/add/:accountID" element={<FormTransactionPage />} />
+				<Route path="/analysis" element={<AnalysisPage />} />
 			</Routes>
 		</>
 	);
