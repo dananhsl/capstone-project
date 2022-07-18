@@ -32,7 +32,6 @@ export default function BankAccount(props) {
 					<TransactionsButton type="button" onClick={props.onNavigate}>
 						Transactions
 					</TransactionsButton>
-					</button>
 					<StyledCatButton
 						type="button"
 						onClick={props.onEdit}
