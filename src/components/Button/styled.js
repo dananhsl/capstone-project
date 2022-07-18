@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledBackBtn = styled.button`
-	display: flex;
-	position: relative;
+	position: absolute;
+	top: 0.7em;
+	left: 1.3em;
 	align-items: center;
 	margin: 1em;
-	padding: 0.5em;
 	border: 1.5px solid white;
-	border-radius: 15px;
+	border-radius: 10px;
 	background: none;
 	color: white;
 `;
