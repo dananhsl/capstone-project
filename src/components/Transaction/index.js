@@ -1,4 +1,4 @@
-import {StyledCatButton} from '../Button/styled';
+import {StyledEditButton, StyledDeleteButton} from '../Button/styled';
 import {editIcon, deleteIcon} from '../Icons/Icons';
 
 import {Section, StyledCategory, StyledDate, StyledNote, StyledValue} from './styled';
@@ -10,19 +10,19 @@ export default function Transaction(props) {
 			<StyledDate>{props.date}</StyledDate>
 			<StyledNote>{props.note}</StyledNote>
 			<StyledCategory>{props.category}</StyledCategory>
-			<StyledCatButton
+			<StyledEditButton
 				type="button"
 				onClick={props.onEdit}
 				aria-label="Edit Transaction Details"
 			>
 				{editIcon}
-			</StyledCatButton>
-			<StyledCatButton
+			</StyledEditButton>
+			<StyledDeleteButton
 				onClick={() => props.deleteTransaction(props.id)}
 				aria-label="Delete Transaction "
 			>
 				{deleteIcon}
-			</StyledCatButton>
+			</StyledDeleteButton>
 		</Section>
 	);
 }

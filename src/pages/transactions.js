@@ -1,6 +1,7 @@
 import {useNavigate, useParams} from 'react-router-dom';
 
-import Button from '../components/Button';
+import {StyledBackBtn} from '../components/Button/styled';
+import {backIcon, addIcon} from '../components/Icons/Icons';
 import AccountBalance from '../components/Transaction/AccountBalance';
 import {AddTransactionButton} from '../components/Transaction/styled';
 import Transactions from '../components/Transaction/Transactions';
@@ -11,11 +12,11 @@ export default function TransactionHistory() {
 	return (
 		<>
 			<h1>Transactions</h1>
-			<Button />
+			<StyledBackBtn onClick={() => navigate('/')}>{backIcon}</StyledBackBtn>
 			<AccountBalance />
 			<Transactions />
 			<AddTransactionButton onClick={() => navigate('/transaction/add/' + accountID)}>
-				+
+				{addIcon}
 			</AddTransactionButton>
 		</>
 	);

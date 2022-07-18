@@ -3,10 +3,11 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../../hooks/useStore';
+import {StyledBackBtn} from '../../Button/styled.js';
+import {backIcon} from '../../Icons/Icons';
 import {notifyAdd, notifyEdit} from '../../Toasts/Toasts';
 import {
 	StyledForm,
-	StyledBackBtn,
 	StyledArticle,
 	StyledLabel,
 	StyledInput,
@@ -40,7 +41,7 @@ export default function FormTransaction() {
 					navigate('/' + accountID);
 				}}
 			>
-				Go back
+				{backIcon}
 			</StyledBackBtn>
 			<StyledForm
 				onSubmit={event => {
