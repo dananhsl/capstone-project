@@ -1,6 +1,6 @@
 import {useSortable} from '@dnd-kit/sortable';
 
-import {StyledCatButton} from '../Button/styled';
+import {StyledDeleteButton, StyledEditButton} from '../Button/styled';
 import {deleteIcon, editIcon} from '../Icons/Icons';
 
 import {
@@ -33,20 +33,20 @@ export default function BankAccount(props) {
 					<TransactionsButton type="button" onClick={props.onNavigate}>
 						Transactions
 					</TransactionsButton>
-					<StyledCatButton
+					<StyledEditButton
 						type="button"
 						onClick={props.onEdit}
 						aria-label="Edit Account Details"
 					>
 						{editIcon}
-					</StyledCatButton>
-					<StyledCatButton
+					</StyledEditButton>
+					<StyledDeleteButton
 						type="button"
 						onClick={props.onDelete}
 						aria-label="Delete Account"
 					>
 						{deleteIcon}
-					</StyledCatButton>
+					</StyledDeleteButton>
 				</Content>
 			</Article>
 		</>

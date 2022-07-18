@@ -1,9 +1,7 @@
-import {useNavigate} from 'react-router-dom';
+import {backIcon} from '../Icons/Icons.js';
 
-import StyledButton from './styled';
+import {StyledBackBtn} from './styled';
+
 export default function Button() {
-	const navigate = useNavigate();
-	return <StyledButton onClick={() => navigate('/')}>Return to Dashboard</StyledButton>;
+	return <StyledBackBtn>{backIcon}</StyledBackBtn>;
 }
-
-Button.propTypes = {};

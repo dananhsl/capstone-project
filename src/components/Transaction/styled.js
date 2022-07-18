@@ -44,30 +44,13 @@ export const StyledCategory = styled.h3`
 	font-size: 1em;
 `;
 
-export const DeleteButton = styled.button`
-	position: absolute;
-	right: 0.8em;
-	bottom: 1em;
-	margin: 0;
-`;
-
-export const EditButton = styled.button`
-	position: absolute;
-	top: 2.2em;
-	right: 2em;
-	margin: 0;
-	padding: 0;
-`;
-
 export const AddTransactionButton = styled.button`
 	position: sticky;
 	bottom: 1em;
-	width: 1em;
-	height: 1em;
+	padding: 0.5em;
 	border: none;
 	border-radius: 50%;
 	background: linear-gradient(to bottom, var(--gradient1), var(--gradient2));
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-	font: 3em 'Bebas Neue', serif;
 	text-shadow: white 0.1em 0.1em 0.1em;
 `;

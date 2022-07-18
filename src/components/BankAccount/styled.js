@@ -42,7 +42,7 @@ export const TransactionsButton = styled.button`
 	all: unset;
 	padding: 0.3em;
 	border-radius: 10px;
-	background: linear-gradient(180deg, var(--gradient1), var(--gradient2), var(--gradient1));
+	background: linear-gradient(to bottom, var(--gradient2), var(--gradient1));
 	color: black;
 	cursor: pointer;
 	&:active {

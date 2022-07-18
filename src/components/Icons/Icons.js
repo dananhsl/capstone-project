@@ -11,3 +11,18 @@ export const deleteIcon = (
 		<path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
 	</StyledIcon>
 );
+
+export const backIcon = (
+	<StyledIcon viewBox="0 0 24 24">
+		<path
+			fill="white"
+			d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
+		/>
+	</StyledIcon>
+);
+
+export const addIcon = (
+	<StyledIcon viewBox="0 0 24 24">
+		<path d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" />
+	</StyledIcon>
+);
