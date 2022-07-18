@@ -25,9 +25,9 @@ export const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0 20px;
 		padding: 0;
-		background-color: var(--bgcolor);
+		background: linear-gradient(90deg, var(--bgcolor), var(--blue), var(--bgcolor));
 		color: var(--textcolor);
-		font-size: 1rem;
+		font-family: 'Bebas Neue', cursive;
 		text-align: center;
 	}
 	

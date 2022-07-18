@@ -3,7 +3,15 @@ import {useSortable} from '@dnd-kit/sortable';
 import {StyledCatButton} from '../Button/styled';
 import {deleteIcon, editIcon} from '../Icons/Icons';
 
-import {Section, DragHandle, Content} from './styled';
+import {
+	Article,
+	DragHandle,
+	Content,
+	StyledAccountName,
+	StyledBalance,
+	StyledBankName,
+	TransactionsButton,
+} from './styled';
 
 export default function BankAccount(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
@@ -16,15 +24,15 @@ export default function BankAccount(props) {
 	};
 	return (
 		<>
-			<Section style={style}>
+			<Article style={style}>
 				<DragHandle ref={setNodeRef} {...attributes} {...listeners} />
 				<Content>
-					<h2>{props.accountName}</h2>
-					<h3>{props.bankName}</h3>
-					<p>{props.value} €</p>
-					<button type="button" onClick={props.onNavigate}>
+					<StyledAccountName>{props.accountName}</StyledAccountName>
+					<StyledBankName>{props.bankName}</StyledBankName>
+					<StyledBalance>{props.value} €</StyledBalance>
+					<TransactionsButton type="button" onClick={props.onNavigate}>
 						Transactions
-					</button>
+					</TransactionsButton>
 					<StyledCatButton
 						type="button"
 						onClick={props.onEdit}
@@ -40,7 +48,7 @@ export default function BankAccount(props) {
 						{deleteIcon}
 					</StyledCatButton>
 				</Content>
-			</Section>
+			</Article>
 		</>
 	);
 }
