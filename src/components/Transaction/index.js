@@ -1,19 +1,11 @@
+import {StyledCatButton} from '../Button/styled';
 import {editIcon, deleteIcon} from '../Icons/Icons';
 
-import {
-	Section,
-	StyledCategory,
-	StyledDate,
-	StyledNote,
-	StyledValue,
-} from './styled';
-import {StyledCatButton} from '../Button/styled';
-
+import {Section, StyledCategory, StyledDate, StyledNote, StyledValue} from './styled';
 
 export default function Transaction(props) {
 	return (
 		<Section>
-
 			<StyledValue change={props.change}>{props.change} €</StyledValue>
 			<StyledDate>{props.date}</StyledDate>
 			<StyledNote>{props.note}</StyledNote>
