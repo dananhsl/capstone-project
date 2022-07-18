@@ -1,5 +1,8 @@
 import {useSortable} from '@dnd-kit/sortable';
 
+import {StyledCatButton} from '../Button/styled';
+import {deleteIcon, editIcon} from '../Icons/Icons';
+
 import {
 	Article,
 	DragHandle,
@@ -9,8 +12,6 @@ import {
 	StyledBankName,
 	TransactionsButton,
 } from './styled';
-import {StyledCatButton} from '../Button/styled';
-import {deleteIcon, editIcon} from '../Icons/Icons';
 
 export default function BankAccount(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
