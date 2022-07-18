@@ -1,3 +1,5 @@
+import {editIcon, deleteIcon} from '../Icons/Icons';
+
 import {
 	Section,
 	StyledCategory,
@@ -6,7 +8,7 @@ import {
 	StyledValue,
 } from './styled';
 import {StyledCatButton} from '../Button/styled';
-import {editIcon, deleteIcon} from '../Icons/Icons';
+
 
 export default function Transaction(props) {
 	return (
