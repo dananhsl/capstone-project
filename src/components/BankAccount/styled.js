@@ -5,7 +5,7 @@ export const Article = styled.article`
 	z-index: 0;
 	margin: 20px 100px;
 	padding: 10px;
-	border: 1px solid #ccc;
+	border: 1px solid var(--textcolor);
 	border-radius: 30px;
 	background: linear-gradient(to bottom, var(--blue), var(--bgcolor));
 	box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
