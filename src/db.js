@@ -154,4 +154,9 @@ export const categories = [
 		name: 'rent',
 		transactions: ['t-7'],
 	},
+	{
+		id: 'c-8',
+		name: 'paycheck',
+		transactions: [],
+	},
 ];

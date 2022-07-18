@@ -8,9 +8,12 @@ import {
 	StyledBalance,
 	StyledBankName,
 	TransactionsButton,
-	DeleteButton,
-	EditButton,
 } from './styled';
+import {StyledCatButton} from '../Button/styled';
+import {deleteIcon, editIcon} from '../Icons/Icons';
+
+import {Section, DragHandle, Content} from './styled';
+
 
 export default function BankAccount(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
@@ -32,12 +35,21 @@ export default function BankAccount(props) {
 					<TransactionsButton type="button" onClick={props.onNavigate}>
 						Transactions
 					</TransactionsButton>
-					<EditButton type="button" onClick={props.onEdit}>
-						Edit
-					</EditButton>
-					<DeleteButton type="button" onClick={props.onDelete}>
-						Delete
-					</DeleteButton>
+					</button>
+					<StyledCatButton
+						type="button"
+						onClick={props.onEdit}
+						aria-label="Edit Account Details"
+					>
+						{editIcon}
+					</StyledCatButton>
+					<StyledCatButton
+						type="button"
+						onClick={props.onDelete}
+						aria-label="Delete Account"
+					>
+						{deleteIcon}
+					</StyledCatButton>
 				</Content>
 			</Article>
 		</>
