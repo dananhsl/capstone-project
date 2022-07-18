@@ -8,8 +8,6 @@ import {
 import {StyledCatButton} from '../Button/styled';
 import {editIcon, deleteIcon} from '../Icons/Icons';
 
-import {Section} from './styled';
-
 export default function Transaction(props) {
 	return (
 		<Section>
