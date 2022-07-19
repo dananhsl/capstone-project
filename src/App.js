@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Analysis from './components/Analysis';
 import FormAccount from './components/InputForms/FormAccount';
 import FormTransaction from './components/InputForms/FormTransaction';
-import MobileNavigation from './components/Navigation/MobileNavigation';
+import Navigation from './components/Navigation/Navigation';
 import Accounts from './pages/Accounts';
 import Transactions from './pages/Transactions';
 import {GlobalStyle} from './styles';
@@ -12,7 +12,7 @@ export default function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<MobileNavigation />
+			<Navigation />
 			<Routes>
 				<Route path="/" element={<Accounts />} />
 				<Route path="/account/add" element={<FormAccount />} />
