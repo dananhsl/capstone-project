@@ -1,30 +1,30 @@
 import {Routes, Route} from 'react-router-dom';
 
-import MobileNavigation from './components/Navigation/MobileNavigation';
-import AnalysisPage from './pages/analysis';
-import Dashboard from './pages/dashboard';
-import FormAccountPage from './pages/formAccount';
-import FormTransactionPage from './pages/formTransaction';
-import TransactionHistory from './pages/transactions';
+import Analysis from './components/Analysis';
+import FormAccount from './components/InputForms/FormAccount';
+import FormTransaction from './components/InputForms/FormTransaction';
+import Navigation from './components/Navigation/Navigation';
+import Accounts from './pages/Accounts';
+import Transactions from './pages/Transactions';
 import {GlobalStyle} from './styles';
 
 export default function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<MobileNavigation />
+			<Navigation />
 			<Routes>
-				<Route path="/" element={<Dashboard />} />
-				<Route path="/bankAccount/add" element={<FormAccountPage />} />
-				<Route path="/:accountID" element={<TransactionHistory />} />
-				<Route path="/bankAccount/edit/:accountID" element={<FormAccountPage />} />
+				<Route path="/" element={<Accounts />} />
+				<Route path="/account/add" element={<FormAccount />} />
+				<Route path="/:accountID" element={<Transactions />} />
+				<Route path="/account/edit/:accountID" element={<FormAccount />} />
 				<Route
 					path="/transaction/edit/:accountID/:transactionID"
-					element={<FormTransactionPage />}
+					element={<FormTransaction />}
 				/>
 
-				<Route path="/transaction/add/:accountID" element={<FormTransactionPage />} />
-				<Route path="/analysis" element={<AnalysisPage />} />
+				<Route path="/transaction/add/:accountID" element={<FormTransaction />} />
+				<Route path="/analysis" element={<Analysis />} />
 			</Routes>
 		</>
 	);

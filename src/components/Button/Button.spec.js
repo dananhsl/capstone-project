@@ -6,9 +6,8 @@ import Button from './';
 
 describe('Button component', () => {
 	it('should render children', () => {
-		const text = 'Click me';
-		render(<Button>{text}</Button>);
-		const button = screen.getByText(text);
+		render(<Button></Button>);
+		const button = screen.getByRole('button', {name: 'Back Button'});
 		expect(button).toBeInTheDocument();
 	});
 });
@@ -16,9 +15,8 @@ describe('Button component', () => {
 describe('Button component', () => {
 	it('should allow clicks', async () => {
 		const handleClick = jest.fn();
-		const text = 'Click me';
-		render(<Button onClick={handleClick}>{text}</Button>);
-		const button = screen.getByText(text);
+		render(<Button onClick={handleClick}></Button>);
+		const button = screen.getByRole('button', {name: 'Back Button'});
 		await userEvent.click(button);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});

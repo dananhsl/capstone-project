@@ -1,10 +1,10 @@
 export const accounts = [
 	{
 		id: 'a-1',
-		name: 'bargeld',
+		name: 'Bargeld',
 		value: 700.02,
 		transactions: ['t-1', 't-2', 't-8', 't-9'],
-		bankName: 'hosentasche',
+		bankName: 'Hosentasche',
 		userId: 'optional',
 	},
 	{
@@ -12,7 +12,7 @@ export const accounts = [
 		name: 'Girokonto',
 		value: 2200.0,
 		transactions: ['t-3', 't-4'],
-		bankName: 'nicht so coole bank',
+		bankName: 'Sparkasse',
 		userId: 'optional',
 	},
 	{
@@ -20,7 +20,7 @@ export const accounts = [
 		name: 'Kreditkarte',
 		value: 700.02,
 		transactions: ['t-5', 't-6', 't-7'],
-		bankName: 'coole bank',
+		bankName: 'American Express',
 		userId: 'optional',
 	},
 ];
@@ -29,11 +29,11 @@ export const transactions = [
 	{
 		id: 't-1',
 		accountID: 'a-1',
-		date: '2022-07-12',
+		date: '2022-07-20',
 		dateCreated: 'optional',
 		dateUpdated: 'optional',
-		change: -40.31,
-		note: 'clothes',
+		change: 40.0,
+		note: 'visit grandma',
 		categoryId: 'c-1',
 	},
 	{

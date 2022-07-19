@@ -32,6 +32,7 @@ export default function FormAccount() {
 	}, [currentAccount]);
 	return (
 		<>
+			<h1>Your Account</h1>
 			<StyledBackBtn
 				type="button"
 				onClick={() => {

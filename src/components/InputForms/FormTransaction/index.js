@@ -35,6 +35,7 @@ export default function FormTransaction() {
 
 	return (
 		<>
+			<h1>Transaction</h1>
 			<StyledBackBtn
 				type="button"
 				onClick={() => {

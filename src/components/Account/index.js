@@ -13,7 +13,7 @@ import {
 	TransactionsButton,
 } from './styled';
 
-export default function BankAccount(props) {
+export default function Account(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
 		id: props.id,
 	});
@@ -30,7 +30,11 @@ export default function BankAccount(props) {
 					<StyledAccountName>{props.accountName}</StyledAccountName>
 					<StyledBankName>{props.bankName}</StyledBankName>
 					<StyledBalance>{props.value} €</StyledBalance>
-					<TransactionsButton type="button" onClick={props.onNavigate}>
+					<TransactionsButton
+						type="button"
+						onClick={props.onNavigate}
+						aria-label="Navigate To Transactions"
+					>
 						Transactions
 					</TransactionsButton>
 					<StyledEditButton

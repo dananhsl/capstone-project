@@ -3,12 +3,11 @@ import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {useNavigate} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import useStore from '../../hooks/useStore';
-import {notifyDelete} from '../Toasts/Toasts';
+import Account from '../components/Account';
+import {notifyDelete} from '../components/Toasts/Toasts';
+import useStore from '../hooks/useStore';
 
-import BankAccount from './index.js';
-
-export default function BankAccounts() {
+export default function Accounts() {
 	const accounts = useStore(state => state.accounts);
 	const deleteBankaccount = useStore(state => state.deleteBankaccount);
 	const navigate = useNavigate();
@@ -24,6 +23,7 @@ export default function BankAccounts() {
 	};
 	return (
 		<>
+			<h1>Dashboard</h1>
 			<DndContext
 				sensors={sensors}
 				collisionDetection={closestCenter}
@@ -35,7 +35,7 @@ export default function BankAccounts() {
 				>
 					{accounts.map(({id, name, bankName, value}) => {
 						return (
-							<BankAccount
+							<Account
 								key={id}
 								id={id}
 								accountName={name}

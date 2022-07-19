@@ -1,11 +1,17 @@
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 import {Pie} from 'react-chartjs-2';
+import {useNavigate} from 'react-router-dom';
 
 import useStore from '../../hooks/useStore';
+import {StyledBackBtn} from '../Button/styled';
+import {backIcon} from '../Icons/Icons';
+
+import {StyledPieContainer} from './styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Analysis() {
+	const navigate = useNavigate();
 	const categories = useStore(state => state.categories);
 	const transactions = useStore(state => state.transactions);
 
@@ -63,5 +69,14 @@ export default function Analysis() {
 		],
 	};
 
-	return <Pie data={data} options={options} />;
+	return (
+		<>
+			<h1>Analysis</h1>
+			<StyledBackBtn onClick={() => navigate('/')}>{backIcon}</StyledBackBtn>
+			<p>Click on caption to remove or add categories from the chart</p>
+			<StyledPieContainer>
+				<Pie data={data} options={options} />
+			</StyledPieContainer>
+		</>
+	);
 }
