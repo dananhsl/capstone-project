@@ -1,13 +1,12 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import useStore from '../../hooks/useStore';
-import {StyledBackBtn} from '../Button/styled';
-import {backIcon, addIcon} from '../Icons/Icons';
-import {notifyDelete} from '../Toasts/Toasts';
-import {AddTransactionButton} from '../Transaction/styled';
-
-import Transaction from './index.js';
+import {StyledBackBtn} from '../components/Button/styled';
+import {backIcon, addIcon} from '../components/Icons/Icons';
+import {notifyDelete} from '../components/Toasts/Toasts';
+import Transaction from '../components/Transaction/index.js';
+import {AddTransactionButton} from '../components/Transaction/styled';
+import useStore from '../hooks/useStore';
 
 export default function Transactions() {
 	useStore(state => state.transactions);

@@ -3,10 +3,9 @@ import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 import {useNavigate} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import useStore from '../../hooks/useStore';
-import {notifyDelete} from '../Toasts/Toasts';
-
-import Account from './index.js';
+import Account from '../components/Account';
+import {notifyDelete} from '../components/Toasts/Toasts';
+import useStore from '../hooks/useStore';
 
 export default function Accounts() {
 	const accounts = useStore(state => state.accounts);

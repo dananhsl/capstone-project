@@ -1,11 +1,11 @@
 import {Routes, Route} from 'react-router-dom';
 
-import Accounts from './components/Account/Accounts';
 import Analysis from './components/Analysis';
 import FormAccount from './components/InputForms/FormAccount';
 import FormTransaction from './components/InputForms/FormTransaction';
 import MobileNavigation from './components/Navigation/MobileNavigation';
-import Transactions from './components/Transaction/Transactions';
+import Accounts from './pages/Accounts';
+import Transactions from './pages/Transactions';
 import {GlobalStyle} from './styles';
 
 export default function App() {
