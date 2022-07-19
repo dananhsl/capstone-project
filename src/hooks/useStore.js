@@ -77,12 +77,12 @@ const useStore = create(
 					return {
 						accounts: [...accounts],
 						transactions: [
-							...state.transactions,
 							{
 								id: transactionId,
 								accountID: accountId,
 								...transaction,
 							},
+							...state.transactions,
 						],
 					};
 				});
@@ -134,11 +134,12 @@ const useStore = create(
 					);
 
 					return {
-						transactions: state.transactions.filter(
-							transaction => transaction.id !== id
-						),
+						transactions: [
+							...state.transactions.filter(transaction => transaction.id !== id),
+						],
 						accounts: [...accounts],
 						categories: [...categories],
+						transactionsFiltered: [],
 					};
 				});
 			},
