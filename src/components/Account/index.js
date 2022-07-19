@@ -13,7 +13,7 @@ import {
 	TransactionsButton,
 } from './styled';
 
-export default function BankAccount(props) {
+export default function Account(props) {
 	const {setNodeRef, attributes, listeners, transition, transform, isDragging} = useSortable({
 		id: props.id,
 	});

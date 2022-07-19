@@ -2,13 +2,13 @@ import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import BankAccount from '.';
+import Account from '.';
 const account = 'Konto A';
 const bankName = 'Bank XY';
 const value = 2198.42;
 describe('Bank Account', () => {
 	it('should render correctly', () => {
-		render(<BankAccount accountName={account} bankName={bankName} value={value} />);
+		render(<Account accountName={account} bankName={bankName} value={value} />);
 
 		const accountTest = screen.getByText(account);
 		const bankNameTest = screen.getByText(bankName);
@@ -27,7 +27,7 @@ describe('Bank Account', () => {
 	it('should allow click on transactions-button', async () => {
 		const handleClick = jest.fn();
 		render(
-			<BankAccount
+			<Account
 				accountName={account}
 				bankName={bankName}
 				value={value}
@@ -55,7 +55,7 @@ describe('Bank Account', () => {
 	it('should allow click on delete-button', async () => {
 		const handleClick = jest.fn();
 		render(
-			<BankAccount
+			<Account
 				accountName={account}
 				bankName={bankName}
 				value={value}
