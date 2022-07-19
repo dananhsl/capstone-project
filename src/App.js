@@ -5,7 +5,7 @@ import Analysis from './components/Analysis';
 import FormAccount from './components/InputForms/FormAccount';
 import FormTransaction from './components/InputForms/FormTransaction';
 import MobileNavigation from './components/Navigation/MobileNavigation';
-import TransactionHistory from './pages/transactions';
+import Transactions from './components/Transaction/Transactions';
 import {GlobalStyle} from './styles';
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
 			<Routes>
 				<Route path="/" element={<Accounts />} />
 				<Route path="/account/add" element={<FormAccount />} />
-				<Route path="/:accountID" element={<TransactionHistory />} />
+				<Route path="/:accountID" element={<Transactions />} />
 				<Route path="/account/edit/:accountID" element={<FormAccount />} />
 				<Route
 					path="/transaction/edit/:accountID/:transactionID"

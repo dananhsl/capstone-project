@@ -41,12 +41,7 @@ describe('Bank Account', () => {
 	it('should allow click on edit-button', async () => {
 		const handleClick = jest.fn();
 		render(
-			<BankAccount
-				accountName={account}
-				bankName={bankName}
-				value={value}
-				onEdit={handleClick}
-			/>
+			<Account accountName={account} bankName={bankName} value={value} onEdit={handleClick} />
 		);
 		const editButton = screen.getByRole('button', {name: 'Edit Account Details'});
 		await userEvent.click(editButton);

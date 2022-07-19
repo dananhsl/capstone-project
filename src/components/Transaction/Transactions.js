@@ -1,9 +1,11 @@
-import {useParams} from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
 import useStore from '../../hooks/useStore';
+import {StyledBackBtn} from '../Button/styled';
+import {backIcon, addIcon} from '../Icons/Icons';
 import {notifyDelete} from '../Toasts/Toasts';
+import {AddTransactionButton} from '../Transaction/styled';
 
 import Transaction from './index.js';
 
@@ -20,8 +22,12 @@ export default function Transactions() {
 	const categories = useStore(state => state.categories);
 	const transactionSelector =
 		transactionsFiltered.length === 0 ? account.Transactions : transactionsFiltered;
+
 	return (
 		<>
+			<h1>Transactions</h1>
+			<StyledBackBtn onClick={() => navigate('/')}>{backIcon}</StyledBackBtn>
+			<h2>Current Balance: {account.value} €</h2>
 			<input
 				id="date"
 				onChange={event => {
@@ -67,6 +73,9 @@ export default function Transactions() {
 				);
 			})}
 			<ToastContainer />
+			<AddTransactionButton onClick={() => navigate('/transaction/add/' + accountID)}>
+				{addIcon}
+			</AddTransactionButton>
 		</>
 	);
 }
