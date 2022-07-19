@@ -33,7 +33,15 @@ const useStore = create(
 			},
 			deleteBankaccount(id) {
 				set(state => {
-					return {accounts: state.accounts.filter(bankAccount => bankAccount.id !== id)};
+					const {accounts, transactions} = get();
+					const account = accounts.find(account_ => account_.id === id);
+					const newTransactions = transactions.filter(
+						transaction => !account.transactions.includes(transaction.id)
+					);
+					return {
+						accounts: state.accounts.filter(account_ => account_.id !== id),
+						transactions: [...newTransactions],
+					};
 				});
 			},
 			addBankaccount(account) {
@@ -139,6 +147,7 @@ const useStore = create(
 						),
 						accounts: [...accounts],
 						categories: [...categories],
+						transactionsFiltered: [],
 					};
 				});
 			},
