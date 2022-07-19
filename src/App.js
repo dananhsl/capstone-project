@@ -16,9 +16,9 @@ export default function App() {
 			<MobileNavigation />
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
-				<Route path="/bankAccount/add" element={<FormAccount />} />
+				<Route path="/account/add" element={<FormAccount />} />
 				<Route path="/:accountID" element={<TransactionHistory />} />
-				<Route path="/bankAccount/edit/:accountID" element={<FormAccount />} />
+				<Route path="/account/edit/:accountID" element={<FormAccount />} />
 				<Route
 					path="/transaction/edit/:accountID/:transactionID"
 					element={<FormTransactionPage />}

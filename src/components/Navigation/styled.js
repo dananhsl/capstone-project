@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NavContainer = styled.ul`
+export const StyledNavContainer = styled.ul`
 	display: flex;
 	position: absolute;
 	z-index: 1;
@@ -46,7 +46,7 @@ export const StyledNavLink = styled(NavLink)`
 	}
 `;
 
-export const Icon = styled.svg`
+export const StyledIcon = styled.svg`
 	position: absolute;
 	z-index: 2;
 	right: 5%;
