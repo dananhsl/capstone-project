@@ -13,9 +13,9 @@ describe('Bank Account', () => {
 		const accountTest = screen.getByText(account);
 		const bankNameTest = screen.getByText(bankName);
 		const valueTest = screen.getByText(value + ' €');
-		const transactionsButton = screen.getByRole('button', {name: 'Transactions'});
-		const editButton = screen.getByRole('button', {name: 'Edit'});
-		const deleteButton = screen.getByRole('button', {name: 'Delete'});
+		const transactionsButton = screen.getByRole('button', {name: 'Navigate To Transactions'});
+		const editButton = screen.getByRole('button', {name: 'Edit Account Details'});
+		const deleteButton = screen.getByRole('button', {name: 'Delete Account'});
 
 		expect(accountTest).toBeInTheDocument();
 		expect(bankNameTest).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('Bank Account', () => {
 				onNavigate={handleClick}
 			/>
 		);
-		const transactionsButton = screen.getByRole('button', {name: 'Transactions'});
+		const transactionsButton = screen.getByRole('button', {name: 'Navigate To Transactions'});
 		await userEvent.click(transactionsButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -48,7 +48,7 @@ describe('Bank Account', () => {
 				onEdit={handleClick}
 			/>
 		);
-		const editButton = screen.getByRole('button', {name: 'Edit'});
+		const editButton = screen.getByRole('button', {name: 'Edit Account Details'});
 		await userEvent.click(editButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -62,7 +62,7 @@ describe('Bank Account', () => {
 				onDelete={handleClick}
 			/>
 		);
-		const deleteButton = screen.getByRole('button', {name: 'Delete'});
+		const deleteButton = screen.getByRole('button', {name: 'Delete Account'});
 		await userEvent.click(deleteButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});

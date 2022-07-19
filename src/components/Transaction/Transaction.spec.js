@@ -18,8 +18,8 @@ describe('Transaction', () => {
 		const dateTest = screen.getByText(date);
 		const noteTest = screen.getByText(note);
 		const categoryTest = screen.getByText(category);
-		const editButton = screen.getByRole('button', {name: 'Edit'});
-		const deleteButton = screen.getByRole('button', {name: 'Delete'});
+		const editButton = screen.getByRole('button', {name: 'Edit Transaction'});
+		const deleteButton = screen.getByRole('button', {name: 'Delete Transaction'});
 		expect(changeTest).toBeInTheDocument();
 		expect(dateTest).toBeInTheDocument();
 		expect(noteTest).toBeInTheDocument();
@@ -38,7 +38,7 @@ describe('Transaction', () => {
 				onEdit={handleClick}
 			></Transaction>
 		);
-		const editButton = screen.getByRole('button', {name: 'Edit'});
+		const editButton = screen.getByRole('button', {name: 'Edit Transaction'});
 		await userEvent.click(editButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -53,7 +53,7 @@ describe('Transaction', () => {
 				deleteTransaction={handleClick}
 			></Transaction>
 		);
-		const deleteButton = screen.getByRole('button', {name: 'Delete'});
+		const deleteButton = screen.getByRole('button', {name: 'Delete Transaction'});
 		await userEvent.click(deleteButton);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});

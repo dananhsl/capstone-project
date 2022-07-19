@@ -1,9 +1,10 @@
 import {Routes, Route} from 'react-router-dom';
 
+import FormAccount from './components/InputForms/FormAccount';
 import MobileNavigation from './components/Navigation/MobileNavigation';
 import AnalysisPage from './pages/analysis';
 import Dashboard from './pages/dashboard';
-import FormAccountPage from './pages/formAccount';
+//import FormAccountPage from './pages/formAccount';
 import FormTransactionPage from './pages/formTransaction';
 import TransactionHistory from './pages/transactions';
 import {GlobalStyle} from './styles';
@@ -15,9 +16,9 @@ export default function App() {
 			<MobileNavigation />
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
-				<Route path="/bankAccount/add" element={<FormAccountPage />} />
+				<Route path="/bankAccount/add" element={<FormAccount />} />
 				<Route path="/:accountID" element={<TransactionHistory />} />
-				<Route path="/bankAccount/edit/:accountID" element={<FormAccountPage />} />
+				<Route path="/bankAccount/edit/:accountID" element={<FormAccount />} />
 				<Route
 					path="/transaction/edit/:accountID/:transactionID"
 					element={<FormTransactionPage />}

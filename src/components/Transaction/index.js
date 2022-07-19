@@ -10,16 +10,12 @@ export default function Transaction(props) {
 			<StyledDate>{props.date}</StyledDate>
 			<StyledNote>{props.note}</StyledNote>
 			<StyledCategory>{props.category}</StyledCategory>
-			<StyledEditButton
-				type="button"
-				onClick={props.onEdit}
-				aria-label="Edit Transaction Details"
-			>
+			<StyledEditButton type="button" onClick={props.onEdit} aria-label="Edit Transaction">
 				{editIcon}
 			</StyledEditButton>
 			<StyledDeleteButton
 				onClick={() => props.deleteTransaction(props.id)}
-				aria-label="Delete Transaction "
+				aria-label="Delete Transaction"
 			>
 				{deleteIcon}
 			</StyledDeleteButton>

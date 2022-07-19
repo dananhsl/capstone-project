@@ -30,7 +30,11 @@ export default function BankAccount(props) {
 					<StyledAccountName>{props.accountName}</StyledAccountName>
 					<StyledBankName>{props.bankName}</StyledBankName>
 					<StyledBalance>{props.value} €</StyledBalance>
-					<TransactionsButton type="button" onClick={props.onNavigate}>
+					<TransactionsButton
+						type="button"
+						onClick={props.onNavigate}
+						aria-label="Navigate To Transactions"
+					>
 						Transactions
 					</TransactionsButton>
 					<StyledEditButton
