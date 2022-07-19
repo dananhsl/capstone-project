@@ -1,10 +1,9 @@
 import {Routes, Route} from 'react-router-dom';
 
+import Analysis from './components/Analysis';
 import FormAccount from './components/InputForms/FormAccount';
 import MobileNavigation from './components/Navigation/MobileNavigation';
-import AnalysisPage from './pages/analysis';
 import Dashboard from './pages/dashboard';
-//import FormAccountPage from './pages/formAccount';
 import FormTransactionPage from './pages/formTransaction';
 import TransactionHistory from './pages/transactions';
 import {GlobalStyle} from './styles';
@@ -25,7 +24,7 @@ export default function App() {
 				/>
 
 				<Route path="/transaction/add/:accountID" element={<FormTransactionPage />} />
-				<Route path="/analysis" element={<AnalysisPage />} />
+				<Route path="/analysis" element={<Analysis />} />
 			</Routes>
 		</>
 	);
