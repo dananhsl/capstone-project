@@ -38,6 +38,7 @@ export default function FormAccount() {
 				onClick={() => {
 					navigate('/');
 				}}
+				aria-label="Back Button"
 			>
 				{backIcon}
 			</StyledBackBtn>
@@ -63,11 +64,11 @@ export default function FormAccount() {
 						onChange={event => {
 							setAccount({...account, name: event.target.value});
 						}}
-						id="inputAccountName"
+						id="accountName"
 						value={account.name}
 						type="text"
 						required
-						aria-label="Enter the name of your Bank Account"
+						aria-label="Name your account"
 						placeholder="Bargeld"
 					></StyledInput>
 				</StyledArticle>
@@ -77,11 +78,11 @@ export default function FormAccount() {
 						onChange={event => {
 							setAccount({...account, bankName: event.target.value});
 						}}
-						id="inputBankName"
+						id="bankName"
 						value={account.bankName}
 						type="text"
 						required
-						aria-label="Enter the name of your Bank"
+						aria-label="Name according bank"
 						placeholder="Hosentasche"
 					></StyledInput>
 				</StyledArticle>
@@ -94,12 +95,12 @@ export default function FormAccount() {
 								value: event.target.value.replace(',', '.'),
 							});
 						}}
-						id="inputAccountValue"
+						id="accountValue"
 						value={account.value}
 						type="text"
 						pattern="([0-9]+)([,\\.]{1}[0-9]+)"
 						required
-						aria-label="Enter the current Value"
+						aria-label="Enter current Balance"
 						placeholder="5.25"
 					></StyledInput>
 				</StyledArticle>
