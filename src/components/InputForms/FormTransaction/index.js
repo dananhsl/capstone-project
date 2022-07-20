@@ -41,6 +41,7 @@ export default function FormTransaction() {
 				onClick={() => {
 					navigate('/' + accountID);
 				}}
+				aria-label="Back Button"
 			>
 				{backIcon}
 			</StyledBackBtn>
@@ -72,6 +73,7 @@ export default function FormTransaction() {
 						}}
 						type="date"
 						aria-label="Enter Date of the transaction"
+						data-testid="datepicker"
 						placeholder="e.g 29.06.2022"
 					></StyledInput>
 				</StyledArticle>
@@ -90,6 +92,7 @@ export default function FormTransaction() {
 						type="text"
 						pattern="(-?)([0-9]+)([,\\.]{1}[0-9]+)"
 						aria-label="Enter Value change for the transaction"
+						data-testid="changevalue"
 						placeholder="500.00"
 					></StyledInput>
 				</StyledArticle>
@@ -104,6 +107,7 @@ export default function FormTransaction() {
 						}}
 						type="text"
 						aria-label="Enter decribtive note for the transaction"
+						data-testid="note"
 						placeholder="e.g. online shopping"
 					></StyledInput>
 				</StyledArticle>
@@ -120,6 +124,7 @@ export default function FormTransaction() {
 							});
 						}}
 						aria-label="Select a Category for the Transcation"
+						data-testid="category"
 					>
 						<option value="" style={{background: 'hotpink'}}>
 							Please select a category
@@ -141,6 +146,7 @@ export default function FormTransaction() {
 						value="income"
 						name="transactionType"
 						aria-label="set income"
+						data-testid="income"
 						onChange={() => {
 							toggleIncomeExpense();
 						}}
@@ -154,6 +160,7 @@ export default function FormTransaction() {
 						value="expense"
 						name="transactionType"
 						aria-label="set expense"
+						data-testid="expense"
 						onChange={() => {
 							toggleIncomeExpense();
 						}}
