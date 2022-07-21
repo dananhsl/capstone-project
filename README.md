@@ -1,146 +1,36 @@
-# React App
+# DIGIBOOK - Capstone project
 
-This is a template for a [Create React App](https://create-react-app.dev/) with additional tools.
+---
 
-<!-- toc -->
+|                          Dashboard                          |                          Transaction                           |                          Analysis                          |
+| :---------------------------------------------------------: | :------------------------------------------------------------: | :--------------------------------------------------------: |
+| <img src="public/Dashboard.png" width="375" height="600" /> | <img src="public/Transactions.png" width="375" height="600" /> | <img src="public/Analysis.png" width="375" height="600" /> |
 
-- [Tech-Stack](#tech-stack)
-- [Getting started](#getting-started)
-- [Test Driven Development](#test-driven-development)
-- [Commands](#commands)
-- [Skipping linters](#skipping-linters)
+## Description
 
-<!-- tocstop -->
+---
 
-It uses the following tools/libraries:
+With " DigiBook " you are able to track and analyze your expenses. You can add multiple bank accounts and transactions, edit them or delete them. On the "analyse"-page your transactions are filtered by categories and you are able to see, which category you spent the most money on. The app was developed in cooperation with [Philipp Enz](https://github.com/p-enz).
 
-## Tech-Stack
-* [Storybook](https://storybook.js.org/)
-* [Jest](https://jestjs.io/)
-* [Stylelint](https://stylelint.io/)
-* [Eslint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+## Tech Stack
 
-## Project Setup
+---
 
-This project uses different deployments to make code reviews easier:
+-   React
+-   Javascript
+-   Zustand
+-   Styled Components
+-   DND-Kit
+-   Toastify
+-   Persist
+-   Charts.js
 
-* Vercel (App Production)
-* Vercel (App Preview)
-* GitHub Pages (Storybook Production)
-* Surge (Storybook Preview)
+## Test Version
 
-### Set up Vercel
+---
 
-Please follow this guide: https://vercel.com/docs/concepts/git
+!! This app is currently optimized for mobile only !!
 
-### Setup GitHub Pages
+[You can find the test version here.](https://digibook.vercel.app/)
 
-Please follow this guide: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
-
-Use the `gh-pages` branch
-
-### Setup Surge
-
-To generate a surge token please use the following command
-
-```shell
-npx surge token
-```
-
-It will output something like this:
-
-```shell
-❯ npx surge token
-
-   1234567890abcdefghijklmnopqrstuv
-```
-
-Add this token to your [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 
-
-We only need it for the "Preview" Environment, but you can add it to both (see screenshot below)
-
-![GitHub Secret for Surge](./docs/resources/github-secrets-surge.png)
-
-## Getting started
-
-**Run the development server:**
-
-```bash
-npm run dev
-```
-
-**Run storybook:**
-
-```shell
-npm run storybook
-```
-
-## Test Driven Development
-
-We jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/)
-and [testing-library](https://testing-library.com/docs/react-testing-library/intro/).
-
-## Commitlint
-
-We use commitlint to ensure conventional commit messages. You can read more about our decision in
-the [documentation](./docs/COMMITS.md).
-
-
-## Commands
-
-**Run the development server:**
-
-```bash
-npm run dev
-```
-
-**Build:**
-
-```shell
-npm run build
-```
-
-**Run storybook:**
-
-```shell
-npm run storybook
-```
-
-**Build storybook:**
-
-```shell
-npm run storybook:build
-```
-
-**Run unit tests:**
-
-```shell
-npm run jest
-# npm run jest:watch # watch
-# npm run test:unit # same as "npm run jest"
-```
-
-**Run all tests:**
-
-```shell
-npm run test
-```
-
-**Run stylelint**
-
-```shell
-npm run stylelint
-```
-
-**Run eslint**
-
-```shell
-npm run eslint
-```
-
-**Run all linters**
-
-```shell
-npm run lint
-```
+![](public/test_video.gif)
