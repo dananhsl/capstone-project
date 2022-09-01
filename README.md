@@ -10,7 +10,7 @@
 
 ---
 
-With " DigiBook " you are able to track and analyze your expenses. You can add multiple bank accounts and transactions, edit them or delete them. On the "analyse"-page your transactions are filtered by categories and you are able to see, which category you spent the most money on. The app was developed in cooperation with [Philipp Enz](https://github.com/p-enz).
+With " DigiBook " you are able to track and analyze your expenses. You can add multiple bank accounts and transactions, edit them or delete them. On the "analyse"-page your transactions are filtered by categories and you are able to see, which category you spent the most money on. The app was developed in cooperation with [Dana Neuhäusel](https://github.com/dananhsl).
 
 ## Tech Stack
 
